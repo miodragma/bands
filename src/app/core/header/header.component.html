@@ -1,0 +1,21 @@
+<header class="site-header">
+  <div class="container">
+    <a href="#" id="branding">
+      <img src="../../../assets/images/dummy/logo.png" alt="Site Title">
+      <small class="site-description">Slogan goes here</small>
+    </a> <!-- #branding -->
+
+    <nav class="main-navigation">
+      <button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
+      <ul class="menu">
+        <li class="menu-item" routerLinkActive="current-menu-item" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/']">Home</a></li>
+        <li class="menu-item" routerLinkActive="current-menu-item"><a [routerLink]="['about']">About</a></li>
+        <li class="menu-item" routerLinkActive="current-menu-item"><a [routerLink]="['gallery']">Gallery</a></li>
+        <li class="menu-item" routerLinkActive="current-menu-item"><a [routerLink]="['members']">Members</a></li>
+        <li class="menu-item"><a href="blog.html">Blog</a></li>
+        <li class="menu-item"><a href="contact.html">Contact</a></li>
+      </ul> <!-- .menu -->
+    </nav> <!-- .main-navigation -->
+    <div class="mobile-menu"></div>
+  </div>
+</header>

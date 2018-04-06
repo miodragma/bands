@@ -1,0 +1,35 @@
+.filterable-items .filterable-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+  transition-property: transform, opacity;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s; }
+
+/* line 54, sass/pages/_gallery.scss */
+.filterable-items {
+  margin: 0 -15px; }
+
+/* line 57, sass/pages/_gallery.scss */
+.filterable-item {
+  padding: 15px;
+  width: 24.5%;
+  float: left;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.filterable-item figure {
+  overflow: hidden;
+  display: block; }
+/* line 70, sass/pages/_gallery.scss */
+.filterable-item figure img {
+  width: 100%;
+  max-width: 100%;
+  display: block; }
+
+@media screen and (max-width: 768px) {
+  /* line 57, sass/pages/_gallery.scss */
+  .filterable-item {
+    width: 50%; } }
+@media screen and (max-width: 480px) {
+  /* line 57, sass/pages/_gallery.scss */
+  .filterable-item {
+    width: 100%; } }

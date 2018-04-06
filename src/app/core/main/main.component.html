@@ -1,0 +1,73 @@
+<main class="main-content">
+  <div class="fullwidth-block testimonial-section">
+    <div class="container">
+      <div class="quote-slider">
+        <ul class="slides">
+          <li>
+            <blockquote>
+              <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo"</p>
+              <cite>John Smith</cite>
+              <span>Corporation CEO, books author</span>
+            </blockquote>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> <!-- .testimonial-section -->
+
+  <div style="background-color: rgb(25, 25, 25)">
+    <div class="container">
+      <header class="section-header">
+        <h2 class="section-title">Upcoming events</h2>
+      </header> <!-- .section-header -->
+      <div class="event-carousel">
+
+        <div class="event" *ngFor="let item of items">
+          <div class="entry-date">
+            <div class="date">{{ item.date }}</div>
+            <span class="month">{{ item.month }}</span>
+          </div>
+          <h2 class="entry-title"><a href="#">{{ item.title }}</a></h2>
+          <p>{{ item.desc }}</p>
+        </div> <!-- .event -->
+
+      </div> <!-- .event-carousel -->
+    </div> <!-- .container -->
+  </div> <!-- .upcoming-event-section -->
+
+  <div class="fullwidth-block why-chooseus-section">
+    <div class="container">
+      <h2 class="section-title">Why choose us?</h2>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="feature">
+            <figure class="cut-corner">
+              <img src="../../../assets/images/dummy/medium-image-1.jpg" alt="">
+            </figure>
+            <h3 class="feature-title">Similique sunt in culpa qui officia deserunt mollitia animi laborum dolorum</h3>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+          </div> <!-- .feature -->
+        </div>
+        <div class="col-md-4">
+          <div class="feature">
+            <figure class="cut-corner">
+              <img src="../../../assets/images/dummy/medium-image-2.jpg" alt="">
+            </figure>
+            <h3 class="feature-title">Similique sunt in culpa qui officia deserunt mollitia animi laborum dolorum</h3>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+          </div> <!-- .feature -->
+        </div>
+        <div class="col-md-4">
+          <div class="feature">
+            <figure class="cut-corner">
+              <img src="../../../assets/images/dummy/medium-image-3.jpg" alt="">
+            </figure>
+            <h3 class="feature-title">Similique sunt in culpa qui officia deserunt mollitia animi laborum dolorum</h3>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+          </div> <!-- .feature -->
+        </div>
+      </div>
+    </div> <!-- .container -->
+  </div> <!-- .why-chooseus-section -->
+</main> <!-- .main-content -->

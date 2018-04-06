@@ -1,0 +1,129 @@
+.quote-slider {
+  position: relative;
+  margin: 80px 0; }
+/* line 99, sass/pages/_homepage.scss */
+.quote-slider .slides {
+  *zoom: 1;
+  margin: 0;
+  padding-left: 0;
+  list-style: none; }
+/* line 4, sass/libs/_mixins.scss */
+.quote-slider .slides:after {
+  content: " ";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  height: 0; }
+/* line 106, sass/pages/_homepage.scss */
+.quote-slider blockquote {
+  margin: 0; }
+/* line 109, sass/pages/_homepage.scss */
+.quote-slider blockquote p {
+  font-size: 36px;
+  font-size: 2.25em;
+  color: white;
+  font-weight: 300;
+  line-height: normal; }
+/* line 116, sass/pages/_homepage.scss */
+.quote-slider blockquote cite {
+  display: block;
+  color: #fd5927;
+  font-size: 24px;
+  font-size: 1.5em;
+  font-weight: 100;
+  font-style: normal; }
+/* line 125, sass/pages/_homepage.scss */
+.quote-slider .flex-direction-nav {
+  *zoom: 1;
+  list-style: none;
+  padding-left: 0; }
+/* line 4, sass/libs/_mixins.scss */
+.quote-slider .flex-direction-nav:after {
+  content: " ";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  height: 0; }
+/* line 130, sass/pages/_homepage.scss */
+.quote-slider .flex-direction-nav li {
+  float: left;
+  margin-right: 2px; }
+/* line 135, sass/pages/_homepage.scss */
+.quote-slider .flex-direction-nav a {
+  display: block;
+  width: 33px;
+  height: 33px;
+  color: white;
+  background-color: #353535;
+  line-height: 32px;
+  text-align: center;
+  -webkit-transition: .3s ease;
+  transition: .3s ease; }
+/* line 145, sass/pages/_homepage.scss */
+.quote-slider .flex-direction-nav a:hover {
+  background-color: #fd5927; }
+
+.event-carousel {
+  margin-bottom: 70px; }
+
+/* line 173, sass/pages/_homepage.scss */
+.event-nav {
+  float: right; }
+/* line 176, sass/pages/_homepage.scss */
+.event-nav a {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  color: white;
+  background-color: #353535;
+  line-height: 32px;
+  text-align: center;
+  -webkit-transition: .3s ease;
+  transition: .3s ease; }
+/* line 186, sass/pages/_homepage.scss */
+.event-nav a:hover {
+  background-color: #fd5927; }
+
+/* line 191, sass/pages/_homepage.scss */
+.event {
+  width: 250px;
+  float: left;
+  display: block;
+  margin-right: 30px;
+  position: relative;
+  padding-left: 100px; }
+/* line 195, sass/pages/_homepage.scss */
+.event .entry-date {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 70px;
+  background: #fd5927;
+  background: -webkit-linear-gradient(90deg, #fd5927, #fd5927) top left, -webkit-linear-gradient(90deg, #fd5927, #fd5927) top right, -webkit-linear-gradient(135deg, transparent 10px, #fd5927 0) bottom right, -webkit-linear-gradient(90deg, #fd5927, #fd5927) bottom left;
+  background: linear-gradient(0deg, #fd5927, #fd5927) top left, linear-gradient(0deg, #fd5927, #fd5927) top right, linear-gradient(315deg, transparent 10px, #fd5927 0) bottom right, linear-gradient(0deg, #fd5927, #fd5927) bottom left;
+  background-size: 55% 55%;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 10px;
+  text-align: center; }
+/* line 211, sass/pages/_homepage.scss */
+.event .entry-date .date {
+  font-size: 36px;
+  font-size: 2.25em;
+  font-weight: 900; }
+/* line 215, sass/pages/_homepage.scss */
+.event .entry-date .month {
+  font-size: 14px;
+  font-size: 0.875em;
+  text-transform: uppercase; }
+/* line 220, sass/pages/_homepage.scss */
+.event .entry-title {
+  margin-top: 0;
+  font-size: 16px;
+  font-size: 1em;
+  font-size: normal;
+  font-weight: 400; }
+/* line 226, sass/pages/_homepage.scss */
+.event .entry-title a {
+  color: white;
+  text-decoration: none; }
