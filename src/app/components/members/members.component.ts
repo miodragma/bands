@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+
+import * as fromApp from '../../../store/app.reducers';
+import * as fromBands from '../shared/store/bands.reducers';
 
 @Component({
   selector: 'app-members',
@@ -7,9 +12,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembersComponent implements OnInit {
 
-  constructor() { }
+  bandsStore: Observable<fromBands.State>;
+
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
+    this.bandsStore = this.store.select('bands');
   }
 
 }

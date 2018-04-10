@@ -1,0 +1,81 @@
+.containerTable {
+  padding: 150px 100px 0 100px;
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 400px;
+  width: 100%;
+  float: right;
+  /*margin-right: 15%;*/
+}
+
+.container {
+  text-align: center; }
+
+.slideTitleHeader {
+  margin: 0;
+  color: white;
+  font-size: 90px;
+  font-size: 5.625em;
+  animation: slideAnimation .3s ease;
+}
+
+.slideSubtitle {
+  color: #fd5927;
+  font-size: 48px;
+  font-size: 3em;
+  font-weight: 300;
+  animation: slideAnimation .6s ease;
+}
+
+.slideDesc {
+  font-size: 30px;
+  font-size: 1.875em;
+  font-weight: 300;
+  line-height: normal;
+  animation: slideAnimation .9s ease;
+}
+
+@keyframes slideAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hideContent {
+  max-height: 0;
+  opacity: 0;
+  transition: all .1s ease-out;
+  overflow: hidden;
+}
+
+.showContent {
+  max-height: 500px;
+  opacity: 1;
+  transition: all 0.5s ease-in;
+}
+
+.selectedBand {
+  background-color: white;
+  animation: selectB .3s ease-in-out;
+}
+
+@keyframes selectB {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+

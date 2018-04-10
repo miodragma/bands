@@ -14,37 +14,50 @@
   display: block;
   overflow: hidden;
   height: 0; }
-/* line 15, sass/pages/_download.scss */
+/* line 15, sass/components/_download.scss */
 .item .item-title {
   color: #fd5927;
   font-weight: 400;
   margin: 0; }
-/* line 20, sass/pages/_download.scss */
+/* line 20, sass/components/_download.scss */
 .item .year {
   display: block;
   color: white;
   margin-bottom: 20px; }
-/* line 25, sass/pages/_download.scss */
+/* line 25, sass/components/_download.scss */
 .item a.button {
   float: left;
   margin-right: 10px; }
-/* line 30, sass/pages/_download.scss */
+/* line 30, sass/components/_download.scss */
 .item .social-share {
-  float: right;
+  float: left;
   border: 1px solid #2c2c2c;
   padding: 8px 10px;
   line-height: normal; }
-/* line 35, sass/pages/_download.scss */
+/* line 35, sass/components/_download.scss */
 .item .social-share span {
   font-size: 13px;
   font-size: 0.8125em; }
-/* line 37, sass/pages/_download.scss */
+/* line 37, sass/components/_download.scss */
 .item .social-share a {
   color: #848484;
   display: inline-block;
   margin: 0 5px;
   -webkit-transition: .3s ease;
   transition: .3s ease; }
-/* line 43, sass/pages/_download.scss */
+/* line 43, sass/components/_download.scss */
 .item .social-share a:hover {
   color: #fd5927; }
+
+.cover {
+  width: 124px;
+  height: 124px;
+  overflow: hidden;
+  float: right;
+}
+
+.cover img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}

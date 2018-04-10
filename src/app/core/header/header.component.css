@@ -3,7 +3,7 @@
   *zoom: 1;
   position: absolute;
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   z-index: 99;
 }
 
@@ -230,7 +230,7 @@ a:hover, a:active, a:focus {
   height: 0;
 }
 
-/* line 164, sass/pages/_homepage.scss */
+/* line 164, sass/components/_homepage.scss */
 .section-header .section-title {
   color: white;
   font-size: 36px;
@@ -238,4 +238,116 @@ a:hover, a:active, a:focus {
   font-weight: 700;
   margin-top: 0;
   float: left;
+}
+
+.aboutSlide {
+  animation: slideAbout .3s linear;
+}
+
+.gallerySlide {
+  animation: slideGallery .3s linear;
+}
+
+.membersSlide {
+  animation: slideMembers .3s linear;
+}
+
+.blogSlide {
+  animation: slideBlog .3s linear;
+}
+
+.contactSlide {
+  animation: slideContact .3s linear;
+}
+
+@keyframes slideAbout {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes slideGallery {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes slideGallery {
+  0% {
+    opacity: 0;
+    transform: translateX(-150px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes slideMembers {
+  0% {
+    opacity: 0;
+    transform: translateX(-250px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes slideBlog {
+  0% {
+    opacity: 0;
+    transform: translateX(-350px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes slideContact {
+  0% {
+    opacity: 0;
+    transform: translateX(-450px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+.homeOpen {
+  animation: animationOpenHome .3s linear;
+}
+
+@keyframes animationOpenHome {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.homeClose {
+  animation: animationCloseHome .3s linear;
+}
+
+@keyframes animationCloseHome {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

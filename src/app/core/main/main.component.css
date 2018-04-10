@@ -1,7 +1,7 @@
 .quote-slider {
   position: relative;
   margin: 80px 0; }
-/* line 99, sass/pages/_homepage.scss */
+/* line 99, sass/components/_homepage.scss */
 .quote-slider .slides {
   *zoom: 1;
   margin: 0;
@@ -14,17 +14,17 @@
   display: block;
   overflow: hidden;
   height: 0; }
-/* line 106, sass/pages/_homepage.scss */
+/* line 106, sass/components/_homepage.scss */
 .quote-slider blockquote {
   margin: 0; }
-/* line 109, sass/pages/_homepage.scss */
+/* line 109, sass/components/_homepage.scss */
 .quote-slider blockquote p {
   font-size: 36px;
   font-size: 2.25em;
   color: white;
   font-weight: 300;
   line-height: normal; }
-/* line 116, sass/pages/_homepage.scss */
+/* line 116, sass/components/_homepage.scss */
 .quote-slider blockquote cite {
   display: block;
   color: #fd5927;
@@ -32,7 +32,7 @@
   font-size: 1.5em;
   font-weight: 100;
   font-style: normal; }
-/* line 125, sass/pages/_homepage.scss */
+/* line 125, sass/components/_homepage.scss */
 .quote-slider .flex-direction-nav {
   *zoom: 1;
   list-style: none;
@@ -44,11 +44,11 @@
   display: block;
   overflow: hidden;
   height: 0; }
-/* line 130, sass/pages/_homepage.scss */
+/* line 130, sass/components/_homepage.scss */
 .quote-slider .flex-direction-nav li {
   float: left;
   margin-right: 2px; }
-/* line 135, sass/pages/_homepage.scss */
+/* line 135, sass/components/_homepage.scss */
 .quote-slider .flex-direction-nav a {
   display: block;
   width: 33px;
@@ -59,17 +59,17 @@
   text-align: center;
   -webkit-transition: .3s ease;
   transition: .3s ease; }
-/* line 145, sass/pages/_homepage.scss */
+/* line 145, sass/components/_homepage.scss */
 .quote-slider .flex-direction-nav a:hover {
   background-color: #fd5927; }
 
 .event-carousel {
   margin-bottom: 70px; }
 
-/* line 173, sass/pages/_homepage.scss */
+/* line 173, sass/components/_homepage.scss */
 .event-nav {
   float: right; }
-/* line 176, sass/pages/_homepage.scss */
+/* line 176, sass/components/_homepage.scss */
 .event-nav a {
   display: inline-block;
   width: 33px;
@@ -80,11 +80,11 @@
   text-align: center;
   -webkit-transition: .3s ease;
   transition: .3s ease; }
-/* line 186, sass/pages/_homepage.scss */
+/* line 186, sass/components/_homepage.scss */
 .event-nav a:hover {
   background-color: #fd5927; }
 
-/* line 191, sass/pages/_homepage.scss */
+/* line 191, sass/components/_homepage.scss */
 .event {
   width: 250px;
   float: left;
@@ -92,7 +92,7 @@
   margin-right: 30px;
   position: relative;
   padding-left: 100px; }
-/* line 195, sass/pages/_homepage.scss */
+/* line 195, sass/components/_homepage.scss */
 .event .entry-date {
   position: absolute;
   left: 0;
@@ -106,24 +106,24 @@
   color: white;
   padding: 10px;
   text-align: center; }
-/* line 211, sass/pages/_homepage.scss */
+/* line 211, sass/components/_homepage.scss */
 .event .entry-date .date {
   font-size: 36px;
   font-size: 2.25em;
   font-weight: 900; }
-/* line 215, sass/pages/_homepage.scss */
+/* line 215, sass/components/_homepage.scss */
 .event .entry-date .month {
   font-size: 14px;
   font-size: 0.875em;
   text-transform: uppercase; }
-/* line 220, sass/pages/_homepage.scss */
+/* line 220, sass/components/_homepage.scss */
 .event .entry-title {
   margin-top: 0;
   font-size: 16px;
   font-size: 1em;
   font-size: normal;
   font-weight: 400; }
-/* line 226, sass/pages/_homepage.scss */
+/* line 226, sass/components/_homepage.scss */
 .event .entry-title a {
   color: white;
   text-decoration: none; }

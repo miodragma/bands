@@ -1,0 +1,77 @@
+<div class="container" style="padding: 150px 0 0 0">
+  <div class="row">
+  </div>
+  <div class="row">
+    <form (keydown.enter)="$event.preventDefault()">
+      <div class="col-md-2">
+        <!--<label>Search by: </label><br>-->
+        <!--<mat-radio-group name="selectedData" (ngModelChange)="onSelectValue($event)" ngModel required>-->
+          <!--<mat-radio-button disabled="true" value="name" style="margin-right: 10px">Name</mat-radio-button>-->
+          <!--<mat-radio-button disabled="true" value="genre">Genre</mat-radio-button>-->
+        <!--</mat-radio-group>-->
+        <mat-form-field>
+          <mat-select placeholder="Filter by Genre" (change)="onChangeGenre($event)">
+            <mat-option>-- None --</mat-option>
+            <mat-optgroup *ngFor="let group of genreGroups" [label]="group.name">
+              <mat-option *ngFor="let genre of group.genre" [value]="genre">
+                {{ genre }}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-5">
+        <mat-paginator
+          *ngIf="(bandsState | async).bands.length > 0"
+          #pagin
+          [length]="(bandsState | async).bands.length"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[10, 15, 25, 100]"
+          (page)="onChangePage($event)">
+        </mat-paginator>
+      </div>
+      <div class="example-form col-md-5">
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Search"
+            type="text"
+            name="searchData"
+            ngModel
+            (keyup)="keyUp.next($event)"
+          >
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div class="row hideContent" [ngClass]="{'showContent': (bandsState | async).bands.length > 0}">
+    <div class="col-md-7 col-md-offset-2">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Band Name</th>
+          <th>Genres</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let band of (bandsState | async).bands | slice:[countFrom]:[countTo]; let i = index"
+            (click)="onClickBand(band.band_id, i)"
+            style="cursor: pointer"
+            [ngClass]="{'selectedBand': idBand == i}">
+          <td>{{ i + 1 }}</td>
+          <td align="left">{{ band.name }}</td>
+          <td align="left">{{ band.genres }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container hideContent" [ngClass]="{'showContent': (bandsState | async).bands.length === 0}">
+  <h2 class="slideTitleHeader">Search your band</h2>
+  <h3 class="slideSubtitle">{{ notExist === '' ? 'Find out more information' : notExist }}</h3>
+  <p class="slideDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus
+    nemo sed est.</p>
+  <a href="#" class="button cut-corner">Read More</a>
+</div>

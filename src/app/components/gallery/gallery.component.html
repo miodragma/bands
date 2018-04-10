@@ -4,41 +4,8 @@
       <div class="content fullwidth">
         <h2 class="entry-title">Gallery</h2>
         <div class="filterable-items">
-          <div class="filterable-item concert">
-              <figure><img src="../../../assets/images/dummy/gallery-1.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-2.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-3.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-4.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-5.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-6.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-7.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-8.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-9.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-10.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-11.jpg" alt="gallery 1"></figure>
-          </div>
-          <div class="filterable-item concert">
-            <figure><img src="../../../assets/images/dummy/gallery-12.jpg" alt="gallery 1"></figure>
+          <div class="filterable-item concert" *ngFor="let gallery of (bandsState | async).gallery; let i = index">
+              <figure><img [src]="gallery.image" [alt]="'image' + i"></figure>
           </div>
         </div>
       </div>
