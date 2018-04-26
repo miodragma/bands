@@ -9,6 +9,8 @@ export const GET_BANDS = 'GET_BANDS';
 export const GET_BAND = 'GET_BAND';
 export const GET_MEMBERS = 'GET_MEMBERS';
 export const GET_GALLERY = 'GET_GALLERY';
+export const SEARCH_INPUT = 'SEARCH_INPUT';
+export const SEARCH_GENRE = 'SEARCH_GENRE';
 
 export class GetBands implements Action {
   readonly type = GET_BANDS;
@@ -45,4 +47,18 @@ export class GetGallery implements Action {
 
 }
 
-export type BandsActions = GetBandId | GetBands | GetBand | GetMembers | GetGallery;
+export class SearchInput implements Action {
+  readonly type = SEARCH_INPUT;
+
+  constructor(public payload: string) {}
+
+}
+
+export class SearchGenre implements Action {
+  readonly type = SEARCH_GENRE;
+
+  constructor(public payload: string) {}
+
+}
+
+export type BandsActions = GetBandId | GetBands | GetBand | GetMembers | GetGallery | SearchInput | SearchGenre;

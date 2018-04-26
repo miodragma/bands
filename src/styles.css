@@ -53,6 +53,83 @@ label {
   color: #afafaf !important;
 }
 
+.mat-option.mat-active {
+  color: #fd5927 !important;
+}
+
+.mat-stepper-horizontal, .mat-stepper-vertical {
+  background-color: rgba(0, 0, 0, .87) !important;
+}
+
+.containerAnime1 {
+  opacity: 0;
+  animation: animeContainer1 .2s ease-in forwards;
+}
+
+@keyframes animeContainer1 {
+  100% {
+    opacity: 1;
+  }
+}
+
+.mat-step-header .mat-step-label.mat-step-label-active {
+  color: #ffffff !important;
+}
+
+.mat-step-header .mat-step-icon {
+  background-color: #fd5927 !important;
+}
+
+.mat-button, .mat-fab, .mat-icon-button, .mat-mini-fab, .mat-raised-button {
+  color: #ffffff;
+  background-color: #afafaf !important;
+}
+
+.mat-dialog-container {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.mat-step-header .mat-step-label, .mat-step-header .mat-step-optional {
+  color: #afafaf !important;
+}
+
+input.mat-input-element {
+  color: #ffffff !important;
+}
+
+.mat-stepper-horizontal-line {
+  border-top-color: #afafaf !important;
+}
+
+textarea {
+  color: #ffffff !important;
+}
+
+.textareaInput {
+  min-width: 500px !important;
+}
+
+.mat-checkbox-frame {
+  border-color: #ffffff !important;
+}
+
+.mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+  background: transparent !important;
+}
+
+.mat-pseudo-checkbox {
+  color: #ffffff;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.mat-select-panel {
+  max-height: 400px !important;
+}
+
 
 /*===========================================
  * Importing CSS Libraries

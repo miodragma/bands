@@ -64,7 +64,7 @@
 
 .selectedBand {
   background-color: white;
-  animation: selectB .3s ease-in-out;
+  /*animation: selectB .3s ease-in-out;*/
 }
 
 @keyframes selectB {
@@ -79,3 +79,13 @@
   }
 }
 
+.containerAnime {
+  opacity: 1;
+  animation: animeContainer .5s ease-out forwards;
+}
+
+@keyframes animeContainer {
+  100% {
+    opacity: 0;
+  }
+}

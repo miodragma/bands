@@ -10,7 +10,9 @@ export interface State {
   aboutBand: AboutBand[];
   isAboutBand: boolean;
   members: Member[];
-  gallery: {image: string}[];
+  gallery: { image: string }[];
+  searchInput: string;
+  searchGenre: string;
 }
 
 const initialState: State = {
@@ -19,7 +21,9 @@ const initialState: State = {
   aboutBand: [],
   isAboutBand: false,
   members: [],
-  gallery: []
+  gallery: [],
+  searchInput: '',
+  searchGenre: ''
 };
 
 export function bandsReducers(state = initialState, action: BandsActions.BandsActions) {
@@ -41,17 +45,26 @@ export function bandsReducers(state = initialState, action: BandsActions.BandsAc
         ...state,
         bandId: action.payload
       };
-      case (BandsActions.GET_MEMBERS):
-        return {
-          ...state,
-          members: action.payload
-        };
-        case (BandsActions.GET_GALLERY):
-          console.log(action.payload)
-          return {
-            ...state,
-            gallery: action.payload
-          };
+    case (BandsActions.GET_MEMBERS):
+      return {
+        ...state,
+        members: action.payload
+      };
+    case (BandsActions.GET_GALLERY):
+      return {
+        ...state,
+        gallery: action.payload
+      };
+    case (BandsActions.SEARCH_INPUT):
+      return {
+        ...state,
+        searchInput: action.payload
+      };
+    case (BandsActions.SEARCH_GENRE):
+      return {
+        ...state,
+        searchGenre: action.payload
+      };
     default:
       return state;
   }

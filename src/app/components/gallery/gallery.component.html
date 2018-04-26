@@ -1,8 +1,8 @@
-<main class="main-content">
+<main class="main-content containerAnime1">
   <div class="fullwidth-block gallery">
     <div class="container" style="padding: 100px 0">
       <div class="content fullwidth">
-        <h2 class="entry-title">Gallery</h2>
+        <h2 class="entry-title">{{ (bandsState | async).gallery.length ? 'Gallery' : 'Gallery is empty' }}</h2>
         <div class="filterable-items">
           <div class="filterable-item concert" *ngFor="let gallery of (bandsState | async).gallery; let i = index">
               <figure><img [src]="gallery.image" [alt]="'image' + i"></figure>

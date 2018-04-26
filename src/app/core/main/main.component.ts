@@ -9,7 +9,7 @@ export class MainComponent implements OnInit {
 
   items = [
     {
-      date: 23,
+      date: 19,
       month: 'Jun',
       title: 'Sed et persipiatis unde omnis iste natus',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid temporibus quos aspernatur'
@@ -21,14 +21,14 @@ export class MainComponent implements OnInit {
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid temporibus quos aspernatur'
     },
     {
-      date: 23,
-      month: 'Jun',
+      date: 10,
+      month: 'Aug',
       title: 'Sed et persipiatis unde omnis iste natus',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid temporibus quos aspernatur'
     },
     {
-      date: 23,
-      month: 'Jun',
+      date: 15,
+      month: 'Sep',
       title: 'Sed et persipiatis unde omnis iste natus',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid temporibus quos aspernatur'
     }

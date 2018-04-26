@@ -1,0 +1,159 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+
+  <!-- New Band -->
+  <mat-step>
+    <form #bandForm="ngForm">
+      <ng-template matStepLabel>Fill out New Band</ng-template>
+      <!-- Band name -->
+      <mat-form-field>
+        <input ngModel name="band" matInput placeholder="Band name" required>
+      </mat-form-field>
+      <!-- Band Image -->
+      <mat-form-field>
+        <input ngModel name="bandImage" matInput placeholder="Image url" required>
+      </mat-form-field>
+      <!-- About Band -->
+      <mat-form-field class="textareaInput">
+        <textarea ngModel name="about" matInput placeholder="About band" matTextareaAutosize matAutosizeMinRows="2"
+                  matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+      <div>
+        <button type="button" style="float: left" (click)="onBandForm(bandForm)" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Genre -->
+
+  <mat-step>
+    <form #genreForm="ngForm">
+      <ng-template matStepLabel>Genres</ng-template>
+      <!-- Image -->
+      <mat-form-field>
+        <mat-select placeholder="Genres" multiple ngModel name="genre">
+          <mat-option>-- None --</mat-option>
+          <mat-optgroup *ngFor="let group of genreGroups" [label]="group.title_genre">
+            <mat-option *ngFor="let genre of group.genres" [value]="genre">
+              {{ genre.name }}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
+        <button type="button" style="float: left" (click)="onGenreForm(genreForm)" mat-button matStepperNext>Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Members -->
+  <mat-step [formGroup]="newMembers">
+    <div formArrayName="members">
+      <ng-template matStepLabel>Members</ng-template>
+      <form *ngFor="let memberCtrl of newMembers.get('members').controls; let i = index" [formGroupName]="i">
+        <!-- First Name -->
+        <mat-form-field>
+          <input formControlName="firstName" matInput placeholder="First Name">
+        </mat-form-field>
+        <!-- Last Name -->
+        <mat-form-field>
+          <input formControlName="lastName" matInput placeholder="Last Name">
+        </mat-form-field>
+        <!-- Image -->
+        <mat-form-field>
+          <input formControlName="image" matInput placeholder="Image url">
+        </mat-form-field>
+        <!-- Member pos -->
+        <mat-form-field>
+          <input formControlName="profession" matInput placeholder="Profession">
+        </mat-form-field>
+        <!-- Former -->
+        <mat-checkbox formControlName="former" color="warn">Former</mat-checkbox>
+        <a style="cursor: pointer; margin-left: 10px; color: red" (click)="onRemoveMember(i)"><i
+          class="fas fa-minus"></i></a>
+      </form>
+    </div>
+    <div>
+      <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
+      <button type="button" style="float: left" mat-button matStepperNext (click)="onMembersForm()">Next</button>
+      <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewMember()"><i
+        class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Member</span>
+      </div>
+    </div>
+  </mat-step>
+
+  <!-- Discography -->
+
+  <mat-step [formGroup]="discography">
+    <div formArrayName="newAlbum">
+      <ng-template matStepLabel>Discography</ng-template>
+      <form *ngFor="let albumCtrl of discography.get('newAlbum').controls; let i = index" [formGroupName]="i">
+        <!-- Album Name -->
+        <mat-form-field>
+          <input formControlName="album" matInput placeholder="Album Name" required>
+        </mat-form-field>
+        <!-- Year -->
+        <mat-form-field>
+          <input formControlName="year" type="number" matInput placeholder="Year" required>
+        </mat-form-field>
+        <!-- Tracks -->
+        <mat-form-field>
+          <input formControlName="tracks" type="number" matInput placeholder="Tracks" required>
+        </mat-form-field>
+        <!-- Image -->
+        <mat-form-field>
+          <input formControlName="image" matInput placeholder="Image url" required>
+        </mat-form-field>
+        <a style="cursor: pointer; margin-left: 10px; color: red" (click)="onRemoveAlbum(i)"><i
+          class="fas fa-minus"></i></a>
+      </form>
+      <div>
+        <button type="button" style="float: left" mat-button
+        matStepperNext (click)="onDiscographyForm()">Next
+        </button>
+        <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewAlbum()"><i
+          class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Album</span>
+        </div>
+        <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
+      </div>
+    </div>
+  </mat-step>
+
+  <!-- Gallery -->
+
+  <mat-step [formGroup]="gallery">
+    <div formArrayName="images">
+      <ng-template matStepLabel>Gallery</ng-template>
+      <form *ngFor="let imageCtrl of gallery.get('images').controls; let i = index" [formGroupName]="i">
+        <!-- Image -->
+        <mat-form-field>
+          <input formControlName="image" matInput placeholder="Image url" required>
+        </mat-form-field>
+        <a style="cursor: pointer; margin-left: 10px; color: red" (click)="onRemoveImage(i)"><i
+          class="fas fa-minus"></i></a>
+      </form>
+      <div>
+        <button type="button" style="float: left" mat-button
+                matStepperNext (click)="onGalleryForm()">Next
+        </button>
+        <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewImage()"><i
+          class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Album</span>
+        </div>
+        <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
+      </div>
+    </div>
+  </mat-step>
+
+  <!-- Submit -->
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button type="button" style="float: right; margin-left: 5px" mat-button matStepperPrevious>Back</button>
+      <button type="submit" style="float: left" mat-button (click)="onSubmitForm()">Submit</button>
+      <button type="button" style="float: right" mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

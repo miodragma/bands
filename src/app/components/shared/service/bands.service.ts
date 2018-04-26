@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Band } from '../models/band.model';
 import { AboutBand } from '../models/aboutBand.model';
 import { Member } from '../models/member.model';
+import { RequestOptions } from '@angular/http';
 
 @Injectable()
 export class BandsService {
@@ -33,6 +34,25 @@ export class BandsService {
   getByGenre(genre: string) {
     return this.httpClient.get<Band[]>(`https://search-bands.herokuapp.com/genre/${genre}`)
       .map(bands => bands);
+  }
+
+  getAllGenres() {
+    return this.httpClient.get<Band[]>(`https://search-bands.herokuapp.com/all-genres`)
+      .map(genres => genres);
+  }
+
+  addNewBand(body) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:4200',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Request-Method': 'POST',
+      })
+    };
+    return this.httpClient.post(`https://search-bands.herokuapp.com/addNewBand`, body, httpOptions)
+      .map(res => res);
   }
 
 }

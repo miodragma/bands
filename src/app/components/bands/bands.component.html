@@ -1,4 +1,4 @@
-<div class="container" style="padding: 150px 0 0 0">
+<div class="container containerAnime1" #container style="padding: 150px 0 0 0">
   <div class="row">
   </div>
   <div class="row">
@@ -10,11 +10,11 @@
           <!--<mat-radio-button disabled="true" value="genre">Genre</mat-radio-button>-->
         <!--</mat-radio-group>-->
         <mat-form-field>
-          <mat-select placeholder="Filter by Genre" (change)="onChangeGenre($event)">
+          <mat-select placeholder="Filter by Genre" (change)="onChangeGenre($event)" [value]="(bandsState | async).searchGenre">
             <mat-option>-- None --</mat-option>
-            <mat-optgroup *ngFor="let group of genreGroups" [label]="group.name">
-              <mat-option *ngFor="let genre of group.genre" [value]="genre">
-                {{ genre }}
+            <mat-optgroup *ngFor="let group of genreGroups" [label]="group.title_genre">
+              <mat-option *ngFor="let genre of group.genres" [value]="genre">
+                {{ genre.name }}
               </mat-option>
             </mat-optgroup>
           </mat-select>
@@ -34,10 +34,10 @@
         <mat-form-field class="example-full-width">
           <input
             matInput
-            placeholder="Search"
+            placeholder="Search band"
             type="text"
             name="searchData"
-            ngModel
+            [value]="(bandsState | async).searchInput"
             (keyup)="keyUp.next($event)"
           >
         </mat-form-field>
@@ -56,9 +56,9 @@
         </thead>
         <tbody>
         <tr *ngFor="let band of (bandsState | async).bands | slice:[countFrom]:[countTo]; let i = index"
-            (click)="onClickBand(band.band_id, i)"
+            (click)="onClickBand(band.band_id)"
             style="cursor: pointer"
-            [ngClass]="{'selectedBand': idBand == i}">
+            [ngClass]="{'selectedBand': (bandsState | async).bandId == band.band_id}">
           <td>{{ i + 1 }}</td>
           <td align="left">{{ band.name }}</td>
           <td align="left">{{ band.genres }}</td>

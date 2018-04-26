@@ -260,6 +260,14 @@ a:hover, a:active, a:focus {
   animation: slideContact .3s linear;
 }
 
+.addBandSlide {
+  animation: slideAddBand .3s linear;
+}
+
+.loginSlide {
+  animation: slideLogin .3s linear;
+}
+
 @keyframes slideAbout {
   0% {
     opacity: 0;
@@ -319,6 +327,28 @@ a:hover, a:active, a:focus {
   0% {
     opacity: 0;
     transform: translateX(-450px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes slideAddBand {
+  0% {
+    opacity: 0;
+    transform: translateX(-550px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes slideLogin {
+  0% {
+    opacity: 0;
+    transform: translateX(-650px)
   }
   100% {
     opacity: 1;
