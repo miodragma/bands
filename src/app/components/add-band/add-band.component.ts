@@ -19,7 +19,9 @@ export class AddBandComponent implements OnInit {
   discography: FormGroup;
   gallery: FormGroup;
 
-  constructor(private dialogRef: MatDialogRef<AddBandComponent>, private bandsService: BandsService) { }
+  constructor(
+    private dialogRef: MatDialogRef<AddBandComponent>,
+    private bandsService: BandsService) { }
 
   ngOnInit() {
     this.bandsService.getAllGenres()
@@ -27,6 +29,20 @@ export class AddBandComponent implements OnInit {
     this.initMembers();
     this.initDiscography();
     this.initGallery();
+  }
+
+  // Get controls
+
+  get membersCtrl() {
+    return <FormArray>this.newMembers.get('members');
+  }
+
+  get discographyCtrl() {
+    return <FormArray>this.discography.get('newAlbum');
+  }
+
+  get galleryCtrl() {
+    return <FormArray>this.gallery.get('images');
   }
 
   // Initialization array forms
@@ -149,9 +165,10 @@ export class AddBandComponent implements OnInit {
 
   onSubmitForm() {
     const newFullBand = this.newBandData;
-    this.bandsService.addNewBand(newFullBand)
-      .subscribe(data => console.log(data));
-    this.dialogRef.close();
+    console.log(newFullBand)
+    // this.bandsService.addNewBand(newFullBand)
+    //   .subscribe(data => console.log(data));
+    // this.dialogRef.close();
   }
 
 }

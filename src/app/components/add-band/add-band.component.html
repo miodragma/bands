@@ -51,7 +51,7 @@
   <mat-step [formGroup]="newMembers">
     <div formArrayName="members">
       <ng-template matStepLabel>Members</ng-template>
-      <form *ngFor="let memberCtrl of newMembers.get('members').controls; let i = index" [formGroupName]="i">
+      <form *ngFor="let memberCtrl of membersCtrl?.controls; let i = index" [formGroupName]="i">
         <!-- First Name -->
         <mat-form-field>
           <input formControlName="firstName" matInput placeholder="First Name">
@@ -88,7 +88,7 @@
   <mat-step [formGroup]="discography">
     <div formArrayName="newAlbum">
       <ng-template matStepLabel>Discography</ng-template>
-      <form *ngFor="let albumCtrl of discography.get('newAlbum').controls; let i = index" [formGroupName]="i">
+      <form *ngFor="let albumCtrl of discographyCtrl?.controls; let i = index" [formGroupName]="i">
         <!-- Album Name -->
         <mat-form-field>
           <input formControlName="album" matInput placeholder="Album Name" required>
@@ -125,7 +125,7 @@
   <mat-step [formGroup]="gallery">
     <div formArrayName="images">
       <ng-template matStepLabel>Gallery</ng-template>
-      <form *ngFor="let imageCtrl of gallery.get('images').controls; let i = index" [formGroupName]="i">
+      <form *ngFor="let imageCtrl of galleryCtrl?.controls; let i = index" [formGroupName]="i">
         <!-- Image -->
         <mat-form-field>
           <input formControlName="image" matInput placeholder="Image url" required>
