@@ -165,10 +165,9 @@ export class AddBandComponent implements OnInit {
 
   onSubmitForm() {
     const newFullBand = this.newBandData;
-    console.log(newFullBand)
-    // this.bandsService.addNewBand(newFullBand)
-    //   .subscribe(data => console.log(data));
-    // this.dialogRef.close();
+    this.bandsService.addNewBand(newFullBand)
+      .subscribe(data => console.log(data));
+    this.dialogRef.close();
   }
 
 }
