@@ -3,11 +3,11 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';
 
-import * as fromApp from '../../../shared/store/app.reducers';
-import * as BandsActions from '../../bands/shared/store/bands.actions';
+import * as fromApp from '../../../../shared/store/app.reducers';
+import * as BandsActions from '../../../bands/shared/store/bands.actions';
 
-import { AboutService } from '../shared/service/about.service';
-import { BandsService } from '../../bands/shared/service/bands.service';
+import { AboutService } from '../../shared/service/about.service';
+import { BandsService } from '../../../bands/shared/service/bands.service';
 
 @Component({
   selector: 'app-edit-discography',

@@ -2,11 +2,18 @@
   <div class="fullwidth-block gallery">
     <div class="container" style="padding: 100px 0">
       <div class="content fullwidth">
-        <h2 class="entry-title">{{ (bandsState | async).gallery.length ? 'Gallery' : 'Gallery is empty' }}</h2>
+        <h2 class="entry-title" style="display: inline-block" (mouseover)="showEdit()" (mouseleave)="hideEdit()">
+          {{ (bandsState | async).gallery.length ? 'Gallery' : 'Gallery is empty' }}
+        </h2>
+        <span style="cursor: pointer; margin-left: 5px" (click)="onEditGallery()" *ngIf="editGallery">
+                <i style="color: #fd5927;" class="far fa-edit"></i>
+              </span>
         <div class="filterable-items">
-          <div class="filterable-item concert" *ngFor="let gallery of (bandsState | async).gallery; let i = index">
-              <figure><img [src]="gallery.image" [alt]="'image' + i"></figure>
-          </div>
+          <section class="photos">
+            <div class="filterable-item concert" *ngFor="let gallery of (bandsState | async).gallery; let i = index">
+              <figure><img (click)="onOpenModal(gallery.image)" [src]="gallery.image" [alt]="'image' + i"></figure>
+            </div>
+          </section>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material';
 import * as fromApp from '../../shared/store/app.reducers';
 import * as fromBands from '../bands/shared/store/bands.reducers';
 
-import { EditDiscographyComponent } from './edit-discography/edit-discography.component';
+import { EditDiscographyComponent } from './edit-about/edit-discography/edit-discography.component';
 
 @Component({
   selector: 'app-about',
