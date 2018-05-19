@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GalleryComponent } from './gallery.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../../shared/store/app.reducers';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('GalleryComponent', () => {
   let component: GalleryComponent;
@@ -8,7 +11,11 @@ describe('GalleryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GalleryComponent ]
+      declarations: [ GalleryComponent ],
+      imports: [
+        StoreModule.forRoot(reducers),
+        RouterTestingModule.withRoutes([])
+      ]
     })
     .compileComponents();
   }));
@@ -19,7 +26,7 @@ describe('GalleryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Gallery Component', () => {
     expect(component).toBeTruthy();
   });
 });

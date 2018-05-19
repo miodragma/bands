@@ -12,7 +12,7 @@
         <mat-form-field>
           <mat-select placeholder="Filter by Genre" (change)="onChangeGenre($event)" [value]="(bandsState | async).searchGenre">
             <mat-option>-- None --</mat-option>
-            <mat-optgroup *ngFor="let group of genreGroups" [label]="group.title_genre">
+            <mat-optgroup *ngFor="let group of ( bandsState | async ).allGenres" [label]="group.title_genre">
               <mat-option *ngFor="let genre of group.genres" [value]="genre">
                 {{ genre.name }}
               </mat-option>

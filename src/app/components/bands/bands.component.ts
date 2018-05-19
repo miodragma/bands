@@ -8,11 +8,13 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { BandsService } from '../shared/service/bands.service';
+import { BandsService } from './shared/service/bands.service';
 
-import * as fromApp from '../../../store/app.reducers';
-import * as fromBands from '../shared/store/bands.reducers';
-import * as BandsActions from '../shared/store/bands.actions';
+import * as fromApp from '../../shared/store/app.reducers';
+import * as fromBands from './shared/store/bands.reducers';
+import * as BandsActions from './shared/store/bands.actions';
+import { AboutBand } from '../about/shared/model/aboutBand.model';
+import { Member } from '../members/shared/model/member.model';
 
 @Component({
   selector: 'app-bands',
@@ -70,6 +72,10 @@ export class BandsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.select('bands')
+      .subscribe(data => {
+        console.log('GENRE: ', data.searchGenre)
+      });
     this.bandsService.getAllGenres()
       .subscribe(genres => this.genreGroups = genres);
     this.bandsState = this.store.select('bands');
@@ -79,35 +85,49 @@ export class BandsComponent implements OnInit {
 
   onClickBand(bandId: number) {
     this.render.addClass(this.container.nativeElement, 'containerAnime');
-    this.store.dispatch(new BandsActions.GetBandId(bandId));
+    let clickedBand: AboutBand[] = [];
+    let clickedMember: Member[] = [];
+    let clickedGallery: {image: string}[] = [];
     this.bandsService.getBand(bandId)
-      .subscribe(band => this.store.dispatch(new BandsActions.GetBand(band)));
+      .subscribe(band => clickedBand = band);
     this.bandsService.getMembers(bandId)
-      .subscribe(members => this.store.dispatch(new BandsActions.GetMembers(members)));
+      .subscribe(members => clickedMember = members);
     this.bandsService.getGallery(bandId)
-      .subscribe(gallery => this.store.dispatch(new BandsActions.GetGallery(gallery)));
+      .subscribe(gallery => clickedGallery = gallery);
     setTimeout(() => {
+      console.log('TIMEOUT')
+      this.store.dispatch(new BandsActions.MultyTwo([
+        new BandsActions.GetBandId(bandId),
+        new BandsActions.GetBand(clickedBand),
+        new BandsActions.GetMembers(clickedMember),
+        new BandsActions.GetGallery(clickedGallery)
+      ]));
       this.router.navigate(['about']);
     }, 500);
   }
 
   onChangeGenre(event) {
-    console.log(event)
-    if (event.value.name === undefined) {
+    console.log(event.source.value === undefined)
+    if (event.source.value === undefined) {
       this.notExist = '';
-      this.store.dispatch(new BandsActions.GetBands([]));
-      this.store.dispatch(new BandsActions.GetBandId(null));
-      this.store.dispatch(new BandsActions.SearchGenre(''));
+      this.store.dispatch(new BandsActions.MultyOne([
+        new BandsActions.GetBands([]),
+        new BandsActions.GetBandId(null),
+        new BandsActions.SearchGenre('')
+      ]));
       return;
     } else {
-      this.store.dispatch(new BandsActions.SearchGenre(event.value.name));
-      this.bandsService.getByGenre(event.value.name)
+      this.store.dispatch(new BandsActions.SearchGenre(event.source.value));
+      this.bandsService.getByGenre(event.source.value.name)
         .subscribe(bands => {
-          if (~typeof bands.length) {
-            this.notExist = `No data from ${event.value.name} genre`;
-            this.store.dispatch(new BandsActions.GetBands([]));
-            this.store.dispatch(new BandsActions.GetBandId(null));
-            this.store.dispatch(new BandsActions.SearchInput(''));
+          console.log(bands)
+          if (Object.keys(bands).length === 0) {
+            this.notExist = `No data from ${event.source.value.name} genre`;
+            this.store.dispatch(new BandsActions.Multy([
+              new BandsActions.GetBands([]),
+              new BandsActions.GetBandId(null),
+              new BandsActions.SearchInput('')
+            ]));
           }
           this.store.dispatch(new BandsActions.GetBands(bands));
           this.countFrom = 0;

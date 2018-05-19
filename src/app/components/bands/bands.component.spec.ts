@@ -1,6 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { StoreModule } from '@ngrx/store';
+
+import { reducers } from '../../shared/store/app.reducers';
+
+import { AppMaterialModule } from '../../shared/app-material.module';
 
 import { BandsComponent } from './bands.component';
+
+import { BandsService } from './shared/service/bands.service';
 
 describe('BandsComponent', () => {
   let component: BandsComponent;
@@ -8,7 +18,15 @@ describe('BandsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BandsComponent ]
+      declarations: [ BandsComponent ],
+      imports: [
+        BrowserAnimationsModule,
+        RouterTestingModule.withRoutes([]),
+        HttpClientTestingModule,
+        StoreModule.forRoot(reducers),
+        AppMaterialModule
+      ],
+      providers: [ BandsService ]
     })
     .compileComponents();
   }));
@@ -19,7 +37,7 @@ describe('BandsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Bands Component', () => {
     expect(component).toBeTruthy();
   });
 });

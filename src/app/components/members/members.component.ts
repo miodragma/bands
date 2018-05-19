@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromApp from '../../../store/app.reducers';
-import * as fromBands from '../shared/store/bands.reducers';
+import * as fromApp from '../../shared/store/app.reducers';
+import * as fromBands from '../bands/shared/store/bands.reducers';
 
 @Component({
   selector: 'app-members',

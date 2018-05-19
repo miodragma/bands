@@ -4,25 +4,28 @@
       <div class="row">
         <div class="col-md-7">
           <div class="content">
-            <h2 class="entry-title">{{ (bandsState | async).aboutBand[0].name }}</h2>
+            <h2 class="entry-title">{{ (bandsState | async).aboutBand[0]?.name }}</h2>
             <figure class="featured-image">
-              <img [src]="(bandsState | async).aboutBand[0].band_image" alt="post image">
+              <img [src]="(bandsState | async).aboutBand[0]?.band_image" alt="post image">
             </figure>
             <p class="leading">Our History</p>
-            <p>{{ (bandsState | async).aboutBand[0].about }}</p>
+            <p>{{ (bandsState | async).aboutBand[0]?.about }}</p>
           </div>
         </div>
         <div class="col-md-4 col-md-push-1">
           <aside class="sidebar">
             <div class="widget">
-              <h3 class="widget-title">Discography</h3>
+              <h3 class="widget-title" style="display: inline-block" (mouseover)="showEdit()" (mouseleave)="hideEdit()">Discography</h3>
+              <span style="cursor: pointer; margin-left: 5px" (click)="onEditDiscography()" *ngIf="editDiscography">
+                <i style="color: #fd5927;" class="far fa-edit"></i>
+              </span>
               <ul class="discography-list">
-                <li *ngFor="let aboutBand of (bandsState | async).aboutBand; let i = index">
-                  <figure class="cover"><img [src]="aboutBand.image" [alt]='aboutBand.album_name + " " +  i'></figure>
+                <li *ngFor="let aboutBand of (bandsState | async)?.aboutBand; let i = index">
+                  <figure class="cover"><img [src]="aboutBand?.image" [alt]='aboutBand?.album_name + " " +  i'></figure>
                   <div class="detail">
-                    <h3><a href="#">{{ aboutBand.album_name }}</a></h3>
-                    <span class="year">{{ aboutBand.year }}</span>
-                    <span class="track">{{ aboutBand.tracks }} tracks</span>
+                    <h3><a>{{ aboutBand?.album_name }}</a></h3>
+                    <span class="year">{{ aboutBand?.year }}</span>
+                    <span class="track">{{ aboutBand?.tracks }} tracks</span>
                   </div>
                 </li>
               </ul>
@@ -32,6 +35,5 @@
       </div>
     </div>
   </div> <!-- .testimonial-section -->
-
 
 </main> <!-- .main-content -->

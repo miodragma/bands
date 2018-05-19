@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../../shared/store/app.reducers';
+import { AppMaterialModule } from '../../shared/app-material.module';
+import { AddBandComponent } from '../../components/add-band/add-band.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,7 +13,12 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ HeaderComponent ],
+      imports: [
+        RouterTestingModule.withRoutes([]),
+        StoreModule.forRoot(reducers),
+        AppMaterialModule
+      ]
     })
     .compileComponents();
   }));
@@ -19,7 +29,8 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Header Component', () => {
     expect(component).toBeTruthy();
   });
+
 });

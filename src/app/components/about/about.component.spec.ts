@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../../shared/store/app.reducers';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -8,7 +11,11 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AboutComponent ]
+      declarations: [ AboutComponent ],
+      imports: [
+        RouterTestingModule.withRoutes([]),
+        StoreModule.forRoot(reducers),
+      ],
     })
     .compileComponents();
   }));
@@ -19,7 +26,7 @@ describe('AboutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create About Component ', () => {
     expect(component).toBeTruthy();
   });
 });

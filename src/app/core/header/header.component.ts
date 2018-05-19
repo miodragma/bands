@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material';
 
-import * as fromApp from '../../../store/app.reducers';
-import * as fromBands from '../../components/shared/store/bands.reducers';
+import * as fromApp from '../../shared/store/app.reducers';
+import * as fromBands from '../../components/bands/shared/store/bands.reducers';
 import { Observable } from 'rxjs/Observable';
+
 import { AddBandComponent } from '../../components/add-band/add-band.component';
 
 @Component({

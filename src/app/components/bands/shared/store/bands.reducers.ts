@@ -1,8 +1,8 @@
 import * as BandsActions from './bands.actions';
 
-import { Band } from '../models/band.model';
-import { AboutBand } from '../models/aboutBand.model';
-import { Member } from '../models/member.model';
+import { Band } from '../model/band.model';
+import { AboutBand } from '../../../about/shared/model/aboutBand.model';
+import { Member } from '../../../members/shared/model/member.model';
 
 export interface State {
   bandId: number;
@@ -13,9 +13,10 @@ export interface State {
   gallery: { image: string }[];
   searchInput: string;
   searchGenre: string;
+  allGenres: any;
 }
 
-const initialState: State = {
+export const initialState: State = {
   bandId: null,
   bands: [],
   aboutBand: [],
@@ -23,7 +24,8 @@ const initialState: State = {
   members: [],
   gallery: [],
   searchInput: '',
-  searchGenre: ''
+  searchGenre: '',
+  allGenres: []
 };
 
 export function bandsReducers(state = initialState, action: BandsActions.BandsActions) {
@@ -64,6 +66,11 @@ export function bandsReducers(state = initialState, action: BandsActions.BandsAc
       return {
         ...state,
         searchGenre: action.payload
+      };
+    case (BandsActions.ALL_GENRES):
+      return {
+        ...state,
+        allGenres: action.payload
       };
     default:
       return state;

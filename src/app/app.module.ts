@@ -1,12 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
+import { MetaReducer, StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { reducers } from '../store/app.reducers';
+import { AppState, reducers } from './shared/store/app.reducers';
+import { enableBatchReducer } from 'ngrx-batch-action-reducer';
+import { environment } from '../environments/environment.prod';
+
+export const metaReducers: MetaReducer<AppState>[] = !environment.production ?
+  [enableBatchReducer] :
+  [enableBatchReducer];
 
 @NgModule({
   declarations: [
@@ -15,7 +21,7 @@ import { reducers } from '../store/app.reducers';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers, {metaReducers})
   ],
   providers: [],
   bootstrap: [AppComponent]

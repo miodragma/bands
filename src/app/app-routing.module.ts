@@ -17,13 +17,15 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { MembersComponent } from './components/members/members.component';
 import { BandsComponent } from './components/bands/bands.component';
 import { AddBandComponent } from './components/add-band/add-band.component';
+import { EditDiscographyComponent } from './components/about/edit-discography/edit-discography.component';
 
 import { GuardService } from './shared/guard.service';
-import { BandsService } from './components/shared/service/bands.service';
+import { BandsService } from './components/bands/shared/service/bands.service';
+import { AboutService } from './components/about/shared/service/about.service';
 
 
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: '', component: ContentComponent },
   { path: 'about', component: AboutComponent, canActivate: [GuardService] },
   { path: 'gallery', component: GalleryComponent, canActivate: [GuardService]  },
@@ -40,7 +42,8 @@ const appRoutes: Routes = [
     GalleryComponent,
     MembersComponent,
     BandsComponent,
-    AddBandComponent
+    AddBandComponent,
+    EditDiscographyComponent
   ],
   imports: [
     CommonModule,
@@ -49,8 +52,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     AppMaterialModule,
-    RouterModule.forRoot(appRoutes),
-    RouterTestingModule
+    RouterModule.forRoot(appRoutes)
   ],
   exports: [
     HeaderComponent,
@@ -58,10 +60,11 @@ const appRoutes: Routes = [
     MainComponent,
     BandsComponent,
     AddBandComponent,
+    EditDiscographyComponent,
     RouterTestingModule
   ],
-  entryComponents: [AddBandComponent],
-  providers: [GuardService, BandsService]
+  entryComponents: [AddBandComponent, EditDiscographyComponent],
+  providers: [GuardService, BandsService, AboutService]
 })
 
 export class AppRoutingModule {}

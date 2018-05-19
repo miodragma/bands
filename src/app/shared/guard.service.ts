@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
-import * as fromApp from 'store/app.reducers';
-import * as fromBands from '../components/shared/store/bands.reducers';
+import * as fromApp from 'app/shared/store/app.reducers';
+import * as fromBands from '../components/bands/shared/store/bands.reducers';
 
 @Injectable()
 export class GuardService implements CanActivate {

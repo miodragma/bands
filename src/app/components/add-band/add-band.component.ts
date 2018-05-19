@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
-import { BandsService } from '../shared/service/bands.service';
+import { BandsService } from '../bands/shared/service/bands.service';
 
 @Component({
   selector: 'app-add-band',
