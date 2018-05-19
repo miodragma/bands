@@ -72,10 +72,6 @@ export class BandsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.select('bands')
-      .subscribe(data => {
-        console.log('GENRE: ', data.searchGenre)
-      });
     this.bandsService.getAllGenres()
       .subscribe(genres => this.genreGroups = genres);
     this.bandsState = this.store.select('bands');
@@ -95,7 +91,6 @@ export class BandsComponent implements OnInit {
     this.bandsService.getGallery(bandId)
       .subscribe(gallery => clickedGallery = gallery);
     setTimeout(() => {
-      console.log('TIMEOUT')
       this.store.dispatch(new BandsActions.MultyTwo([
         new BandsActions.GetBandId(bandId),
         new BandsActions.GetBand(clickedBand),
@@ -107,7 +102,6 @@ export class BandsComponent implements OnInit {
   }
 
   onChangeGenre(event) {
-    console.log(event.source.value === undefined)
     if (event.source.value === undefined) {
       this.notExist = '';
       this.store.dispatch(new BandsActions.MultyOne([
@@ -120,7 +114,6 @@ export class BandsComponent implements OnInit {
       this.store.dispatch(new BandsActions.SearchGenre(event.source.value));
       this.bandsService.getByGenre(event.source.value.name)
         .subscribe(bands => {
-          console.log(bands)
           if (Object.keys(bands).length === 0) {
             this.notExist = `No data from ${event.source.value.name} genre`;
             this.store.dispatch(new BandsActions.Multy([
