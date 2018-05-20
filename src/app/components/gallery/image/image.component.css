@@ -1,0 +1,36 @@
+img {
+  max-height: 715px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  user-select: none;
+}
+
+a {
+  color: red;
+}
+
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.prev {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+@media (max-height: 700px) {
+  img {
+    max-height: 420px;
+  }
+}
+
+.disabled {
+  color: #afafaf;
+  pointer-events: none;
+}

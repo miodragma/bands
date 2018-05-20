@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -15,6 +15,8 @@ import * as fromBands from '../bands/shared/store/bands.reducers';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
+
+  @ViewChildren('image') image;
 
   editGallery = false;
 
@@ -41,9 +43,16 @@ export class GalleryComponent implements OnInit {
     });
   }
 
-  onOpenModal(image: string) {
+  onOpenModal(image: string, index: number) {
+    console.log(this.image);
+    const dataImage = {
+      src: image,
+      index: index,
+      data: this.image
+    };
     this.dialog.open(ImageComponent, {
-      data: image
+      data: dataImage,
+      minWidth: '100%'
     });
   }
 

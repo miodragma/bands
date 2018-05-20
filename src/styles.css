@@ -90,6 +90,10 @@ label {
   padding: 0 !important;
 }
 
+.mat-dialog-container {
+  box-shadow: none !important;
+}
+
 .mat-step-header .mat-step-label, .mat-step-header .mat-step-optional {
   color: #afafaf !important;
 }
@@ -122,9 +126,9 @@ textarea {
   color: #ffffff;
 }
 
-.cdk-overlay-dark-backdrop {
-  background: rgba(255, 255, 255, 0.1) !important;
-}
+/*.cdk-overlay-dark-backdrop {*/
+  /*background: rgba(255, 255, 255, 0.1) !important;*/
+/*}*/
 
 .mat-select-panel {
   max-height: 400px !important;

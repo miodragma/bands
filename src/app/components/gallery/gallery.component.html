@@ -10,8 +10,8 @@
               </span>
         <div class="filterable-items">
           <section class="photos">
-            <div class="filterable-item concert" *ngFor="let gallery of (bandsState | async).gallery; let i = index">
-              <figure><img (click)="onOpenModal(gallery.image)" [src]="gallery.image" [alt]="'image' + i"></figure>
+            <div class="filterable-item concert"  *ngFor="let gallery of (bandsState | async).gallery; let i = index">
+              <figure><img #image (click)="onOpenModal(gallery.image, i)" [src]="gallery.image" [alt]="'image' + i"></figure>
             </div>
           </section>
         </div>

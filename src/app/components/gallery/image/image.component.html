@@ -1,1 +1,7 @@
+<a (click)="onPrev()" class="prev" [ngClass]="{'disabled': copyOfData['index'] === 0}">
+  <i class="fas fa-chevron-left fa-3x"></i>
+</a>
 <img [src]="image">
+<a (click)="onNext()" class="next" [ngClass]="{'disabled': copyOfData['index'] === copyOfData['data'].length - 1}">
+  <i class="fas fa-chevron-right fa-3x"></i>
+</a>
