@@ -1,0 +1,51 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+
+  <!-- Members -->
+  <mat-step [formGroup]="newMembers">
+    <div formArrayName="members">
+      <ng-template matStepLabel>Members</ng-template>
+      <form *ngFor="let memberCtrl of membersCtrl?.controls; let i = index" [formGroupName]="i">
+        <!-- First Name -->
+        <mat-form-field>
+          <input formControlName="firstName" matInput placeholder="First Name">
+        </mat-form-field>
+        <!-- Last Name -->
+        <mat-form-field>
+          <input formControlName="lastName" matInput placeholder="Last Name">
+        </mat-form-field>
+        <!-- Image -->
+        <mat-form-field>
+          <input formControlName="image" matInput placeholder="Image url">
+        </mat-form-field>
+        <!-- Member pos -->
+        <mat-form-field>
+          <input formControlName="profession" matInput placeholder="Profession">
+        </mat-form-field>
+        <!-- Former -->
+        <mat-checkbox formControlName="former" color="warn">Former</mat-checkbox>
+        <a style="cursor: pointer; margin-left: 10px; color: red" (click)="onRemoveMember(i)"><i
+          class="fas fa-minus"></i></a>
+      </form>
+    </div>
+    <div>
+      <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
+      <button type="button" style="float: left" mat-button matStepperNext (click)="onMembersForm()">Next</button>
+      <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewMember()"><i
+        class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Member</span>
+      </div>
+    </div>
+  </mat-step>
+
+
+  <!-- Submit -->
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p style="color: white">You are now done.</p>
+    <div>
+      <button type="button" style="float: right; margin-left: 5px" mat-button matStepperPrevious>Back</button>
+      <button type="submit" style="float: left" mat-button (click)="onSubmitForm()">Submit</button>
+      <button type="button" style="float: right" mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
