@@ -78,10 +78,8 @@ export class EditDiscographyComponent implements OnInit {
 
   onSubmitForm() {
     const newDiscography = this.newBandDiscography;
-    console.log(newDiscography)
     this.aboutService.addNewDiscography(newDiscography)
       .subscribe(data => {
-        console.log(data)
         this.bandsService.getBand(this.newBandDiscography['bandId'])
           .subscribe(band => this.store.dispatch(new BandsActions.GetBand(band)));
       });

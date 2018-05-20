@@ -19,12 +19,14 @@ import { BandsComponent } from './components/bands/bands.component';
 import { AddBandComponent } from './components/add-band/add-band.component';
 import { EditDiscographyComponent } from './components/about/edit-about/edit-discography/edit-discography.component';
 import { EditGalleryComponent } from './components/gallery/edit-gallery/edit-gallery.component';
+import { EditMembersComponent } from './components/members/edit-members/edit-members.component';
 import { ImageComponent } from './components/gallery/image/image.component';
 
 import { GuardService } from './shared/guard.service';
 import { BandsService } from './components/bands/shared/service/bands.service';
 import { AboutService } from './components/about/shared/service/about.service';
 import { GalleryService } from './components/gallery/shared/service/gallery.service';
+import { MembersService } from './components/members/shared/service/members.service';
 
 export const appRoutes: Routes = [
   { path: '', component: ContentComponent },
@@ -46,6 +48,7 @@ export const appRoutes: Routes = [
     AddBandComponent,
     EditDiscographyComponent,
     EditGalleryComponent,
+    EditMembersComponent,
     ImageComponent
   ],
   imports: [
@@ -65,11 +68,12 @@ export const appRoutes: Routes = [
     AddBandComponent,
     EditDiscographyComponent,
     EditGalleryComponent,
+    EditMembersComponent,
     ImageComponent,
     RouterTestingModule
   ],
-  entryComponents: [AddBandComponent, EditDiscographyComponent, EditGalleryComponent, ImageComponent],
-  providers: [GuardService, BandsService, AboutService, GalleryService]
+  entryComponents: [AddBandComponent, EditDiscographyComponent, EditGalleryComponent, ImageComponent, EditMembersComponent],
+  providers: [GuardService, BandsService, AboutService, GalleryService, MembersService]
 })
 
 export class AppRoutingModule {}
