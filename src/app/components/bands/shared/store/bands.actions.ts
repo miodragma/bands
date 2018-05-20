@@ -63,7 +63,7 @@ export class SearchGenre implements Action {
 export class Multy implements Action {
   readonly type = MULTY;
 
-  constructor(public payload: [GetBands, GetBandId, SearchInput]) {}
+  constructor(public payload: [GetBands, GetBandId]) {}
 }
 
 @BatchAction()

@@ -52,6 +52,7 @@ export class BandsComponent implements OnInit {
       .debounceTime(250)
       .distinctUntilChanged()
       .subscribe(val => {
+        this.store.dispatch(new BandsActions.SearchGenre(''));
         if (val.target.value.trim() === '') {
           this.notExist = '';
           this.store.dispatch(new BandsActions.GetBands([]));
@@ -102,6 +103,7 @@ export class BandsComponent implements OnInit {
   }
 
   onChangeGenre(event) {
+    this.store.dispatch(new BandsActions.SearchInput(''));
     if (event.source.value === undefined) {
       this.notExist = '';
       this.store.dispatch(new BandsActions.MultyOne([
@@ -118,8 +120,7 @@ export class BandsComponent implements OnInit {
             this.notExist = `No data from ${event.source.value.name} genre`;
             this.store.dispatch(new BandsActions.Multy([
               new BandsActions.GetBands([]),
-              new BandsActions.GetBandId(null),
-              new BandsActions.SearchInput('')
+              new BandsActions.GetBandId(null)
             ]));
           }
           this.store.dispatch(new BandsActions.GetBands(bands));
