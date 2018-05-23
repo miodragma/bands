@@ -7,19 +7,19 @@
       <form *ngFor="let memberCtrl of membersCtrl?.controls; let i = index" [formGroupName]="i">
         <!-- First Name -->
         <mat-form-field>
-          <input formControlName="firstName" matInput placeholder="First Name">
+          <input formControlName="firstName" matInput placeholder="First Name" required>
         </mat-form-field>
         <!-- Last Name -->
         <mat-form-field>
-          <input formControlName="lastName" matInput placeholder="Last Name">
+          <input formControlName="lastName" matInput placeholder="Last Name" required>
         </mat-form-field>
         <!-- Image -->
         <mat-form-field>
-          <input formControlName="image" matInput placeholder="Image url">
+          <input formControlName="image" matInput placeholder="Image url" required>
         </mat-form-field>
         <!-- Member pos -->
         <mat-form-field>
-          <input formControlName="profession" matInput placeholder="Profession">
+          <input formControlName="profession" matInput placeholder="Profession" required>
         </mat-form-field>
         <!-- Former -->
         <mat-checkbox formControlName="former" color="warn">Former</mat-checkbox>
@@ -29,7 +29,9 @@
     </div>
     <div>
       <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
-      <button type="button" style="float: left" mat-button matStepperNext (click)="onMembersForm()">Next</button>
+      <button type="button" style="float: left" mat-button matStepperNext (click)="onMembersForm()"
+              [disabled]="!isMembersValid">Next
+      </button>
       <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewMember()"><i
         class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Member</span>
       </div>

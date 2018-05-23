@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, DoCheck, OnInit} from "@angular/core";
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';
@@ -14,7 +14,9 @@ import * as BandsActions from '../../bands/shared/store/bands.actions';
   templateUrl: './edit-gallery.component.html',
   styleUrls: ['./edit-gallery.component.css']
 })
-export class EditGalleryComponent implements OnInit {
+export class EditGalleryComponent implements OnInit, DoCheck {
+
+  isGalleryValid = true;
 
   gallery: FormGroup;
   newBandGallery = {};
@@ -30,6 +32,10 @@ export class EditGalleryComponent implements OnInit {
     this.initGallery();
     this.store.select('bands')
       .subscribe(data => this.newBandGallery['bandId'] = data.bandId);
+  }
+
+  ngDoCheck() {
+    this.isGalleryValid = this.gallery.valid;
   }
 
   // Initialization Gallery array
@@ -52,6 +58,7 @@ export class EditGalleryComponent implements OnInit {
         'image': new FormControl(null)
       })
     );
+    setTimeout(() => this.isGalleryValid = this.gallery.valid);
   }
 
   onRemoveImage(index: number) {

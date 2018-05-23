@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, DoCheck, OnInit} from "@angular/core";
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';
@@ -14,7 +14,9 @@ import * as BandsActions from '../../bands/shared/store/bands.actions';
   templateUrl: './edit-members.component.html',
   styleUrls: ['./edit-members.component.css']
 })
-export class EditMembersComponent implements OnInit {
+export class EditMembersComponent implements OnInit, DoCheck {
+
+  isMembersValid = true;
 
   newMembers: FormGroup;
   newBandMembers = {};
@@ -30,6 +32,10 @@ export class EditMembersComponent implements OnInit {
     this.initMembers();
     this.store.select('bands')
       .subscribe(data => this.newBandMembers['bandId'] = data.bandId);
+  }
+
+  ngDoCheck() {
+    this.isMembersValid = this.newMembers.valid;
   }
 
   // Initialization Members array
@@ -60,6 +66,7 @@ export class EditMembersComponent implements OnInit {
         'former': new FormControl(false)
       })
     );
+    setTimeout(() => this.isMembersValid = this.newMembers.valid);
   }
 
   onRemoveMember(index: number) {

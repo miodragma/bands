@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, DoCheck, OnInit} from "@angular/core";
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';
@@ -14,8 +14,9 @@ import { BandsService } from '../../../bands/shared/service/bands.service';
   templateUrl: './edit-discography.component.html',
   styleUrls: ['./edit-discography.component.css']
 })
-export class EditDiscographyComponent implements OnInit {
+export class EditDiscographyComponent implements OnInit, DoCheck {
 
+  isDiscographyValid = true;
   discography: FormGroup;
   newBandDiscography = {};
 
@@ -30,6 +31,11 @@ export class EditDiscographyComponent implements OnInit {
     this.initDiscography();
     this.store.select('bands')
       .subscribe(data => this.newBandDiscography['bandId'] = data.bandId);
+  }
+
+  ngDoCheck() {
+    this.isDiscographyValid = this.discography.valid;
+    console.log(this.discography)
   }
 
   // Initialization Discography Array
@@ -58,6 +64,7 @@ export class EditDiscographyComponent implements OnInit {
         'image': new FormControl(null)
       })
     );
+    setTimeout(() => this.isDiscographyValid = this.discography.valid);
   }
 
   onRemoveAlbum(index: number) {

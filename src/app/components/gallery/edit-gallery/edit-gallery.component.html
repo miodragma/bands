@@ -14,7 +14,7 @@
       </form>
       <div>
         <button type="button" style="float: left" mat-button
-                matStepperNext (click)="onGalleryForm()">Next
+                matStepperNext (click)="onGalleryForm()" [disabled]="!isGalleryValid">Next
         </button>
         <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewImage()">
           <i class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Image</span>
