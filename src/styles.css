@@ -134,6 +134,10 @@ textarea {
   max-height: 400px !important;
 }
 
+.mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}
+
 
 /*===========================================
  * Importing CSS Libraries

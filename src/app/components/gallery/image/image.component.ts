@@ -16,7 +16,6 @@ export class ImageComponent implements OnInit {
   ngOnInit() {
     this.copyOfData = this.data;
     this.image = this.data['src'];
-    console.log(this.copyOfData)
   }
 
   @HostListener('window:keyup', ['$event'])

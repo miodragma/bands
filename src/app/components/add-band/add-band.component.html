@@ -1,4 +1,4 @@
-<mat-horizontal-stepper [linear]="true" #stepper>
+<mat-horizontal-stepper [linear]="false" #stepper="matHorizontalStepper">
 
   <!-- New Band -->
   <mat-step>
@@ -14,11 +14,20 @@
       </mat-form-field>
       <!-- About Band -->
       <mat-form-field class="textareaInput">
-        <textarea ngModel name="about" matInput placeholder="About band" matTextareaAutosize matAutosizeMinRows="2"
-                  matAutosizeMaxRows="5"></textarea>
+        <textarea ngModel
+                  name="about"
+                  matInput
+                  placeholder="About band"
+                  matTextareaAutosize
+                  matAutosizeMinRows="2"
+                  matAutosizeMaxRows="5"
+                  required>
+        </textarea>
       </mat-form-field>
       <div>
-        <button type="button" style="float: left" (click)="onBandForm(bandForm)" mat-button matStepperNext>Next</button>
+        <button type="button" [disabled]="!bandForm.valid" style="float: left" (click)="onBandForm(bandForm)" mat-button
+                matStepperNext>Next
+        </button>
       </div>
     </form>
   </mat-step>
@@ -30,7 +39,7 @@
       <ng-template matStepLabel>Genres</ng-template>
       <!-- Image -->
       <mat-form-field>
-        <mat-select placeholder="Genres" multiple ngModel name="genre">
+        <mat-select placeholder="Genres" multiple ngModel name="genre" required>
           <mat-option>-- None --</mat-option>
           <mat-optgroup *ngFor="let group of genreGroups" [label]="group.title_genre">
             <mat-option *ngFor="let genre of group.genres" [value]="genre">
@@ -41,7 +50,7 @@
       </mat-form-field>
       <div>
         <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
-        <button type="button" style="float: left" (click)="onGenreForm(genreForm)" mat-button matStepperNext>Next
+        <button type="button" style="float: left" (click)="onGenreForm(genreForm)" mat-button matStepperNext [disabled]="!genreForm.valid">Next
         </button>
       </div>
     </form>
@@ -54,19 +63,19 @@
       <form *ngFor="let memberCtrl of membersCtrl?.controls; let i = index" [formGroupName]="i">
         <!-- First Name -->
         <mat-form-field>
-          <input formControlName="firstName" matInput placeholder="First Name">
+          <input formControlName="firstName" matInput placeholder="First Name" required>
         </mat-form-field>
         <!-- Last Name -->
         <mat-form-field>
-          <input formControlName="lastName" matInput placeholder="Last Name">
+          <input formControlName="lastName" matInput placeholder="Last Name" required>
         </mat-form-field>
         <!-- Image -->
         <mat-form-field>
-          <input formControlName="image" matInput placeholder="Image url">
+          <input formControlName="image" matInput placeholder="Image url" required>
         </mat-form-field>
         <!-- Member pos -->
         <mat-form-field>
-          <input formControlName="profession" matInput placeholder="Profession">
+          <input formControlName="profession" matInput placeholder="Profession" required>
         </mat-form-field>
         <!-- Former -->
         <mat-checkbox formControlName="former" color="warn">Former</mat-checkbox>
@@ -76,7 +85,7 @@
     </div>
     <div>
       <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
-      <button type="button" style="float: left" mat-button matStepperNext (click)="onMembersForm()">Next</button>
+      <button type="button" style="float: left" [disabled]="!isMemberValid" mat-button matStepperNext (click)="onMembersForm()">Next</button>
       <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewMember()"><i
         class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Member</span>
       </div>
@@ -110,10 +119,10 @@
       </form>
       <div>
         <button type="button" style="float: left" mat-button
-        matStepperNext (click)="onDiscographyForm()">Next
+                matStepperNext (click)="onDiscographyForm()">Next
         </button>
-        <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewAlbum()"><i
-          class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Album</span>
+        <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewAlbum()">
+          <i class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Album</span>
         </div>
         <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
       </div>
@@ -137,8 +146,8 @@
         <button type="button" style="float: left" mat-button
                 matStepperNext (click)="onGalleryForm()">Next
         </button>
-        <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewImage()"><i
-          class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Album</span>
+        <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewImage()">
+          <i class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Image</span>
         </div>
         <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
       </div>

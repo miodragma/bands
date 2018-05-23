@@ -21,11 +21,13 @@
               </span>
               <ul class="discography-list">
                 <li *ngFor="let aboutBand of (bandsState | async)?.aboutBand; let i = index">
-                  <figure class="cover"><img [src]="aboutBand?.image" [alt]='aboutBand?.album_name + " " +  i'></figure>
+                  <figure class="cover" *ngIf="aboutBand.image !== null">
+                    <img [src]="aboutBand?.image" [alt]='aboutBand?.album_name + " " +  i'>
+                  </figure>
                   <div class="detail">
                     <h3><a>{{ aboutBand?.album_name }}</a></h3>
                     <span class="year">{{ aboutBand?.year }}</span>
-                    <span class="track">{{ aboutBand?.tracks }} tracks</span>
+                    <span class="track">{{ aboutBand?.tracks ? aboutBand.tracks + ' tracks' : '' }}</span>
                   </div>
                 </li>
               </ul>

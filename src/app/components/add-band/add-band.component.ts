@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
+import {Component, DoCheck, OnInit, ViewChildren} from '@angular/core';
+import {FormArray, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
 import { BandsService } from '../bands/shared/service/bands.service';
@@ -9,15 +9,22 @@ import { BandsService } from '../bands/shared/service/bands.service';
   templateUrl: './add-band.component.html',
   styleUrls: ['./add-band.component.css']
 })
-export class AddBandComponent implements OnInit {
+export class AddBandComponent implements OnInit, DoCheck {
 
+  @ViewChildren('members') membersF;
   genreGroups = [];
 
   newBandData = {};
 
+  // Form Group
   newMembers: FormGroup;
   discography: FormGroup;
   gallery: FormGroup;
+
+  // Validation;
+  isMemberValid = true;
+  isDiscographyValid = true;
+  isGalleryValid = true;
 
   constructor(
     private dialogRef: MatDialogRef<AddBandComponent>,
@@ -29,6 +36,12 @@ export class AddBandComponent implements OnInit {
     this.initMembers();
     this.initDiscography();
     this.initGallery();
+  }
+
+  ngDoCheck() {
+    this.isMemberValid = this.newMembers.valid;
+    this.isDiscographyValid = this.discography.valid;
+    this.isGalleryValid = this.gallery.valid;
   }
 
   // Get controls
@@ -49,38 +62,19 @@ export class AddBandComponent implements OnInit {
 
   initMembers() {
     this.newMembers = new FormGroup({
-      'members': new FormArray([
-        new FormGroup({
-          'firstName': new FormControl(null),
-          'lastName': new FormControl(null),
-          'image': new FormControl(null),
-          'profession': new FormControl(null),
-          'former': new FormControl(false)
-        })
-      ])
+      'members': new FormArray([])
     });
   }
 
   initDiscography() {
     this.discography = new FormGroup({
-      'newAlbum': new FormArray([
-        new FormGroup({
-          'album': new FormControl(null),
-          'year': new FormControl(null),
-          'tracks': new FormControl(null),
-          'image': new FormControl(null)
-        })
-      ])
+      'newAlbum': new FormArray([])
     });
   }
 
   initGallery() {
     this.gallery = new FormGroup({
-      'images': new FormArray([
-        new FormGroup({
-          'image': new FormControl(null)
-        })
-      ])
+      'images': new FormArray([])
     });
   }
 
@@ -88,9 +82,9 @@ export class AddBandComponent implements OnInit {
 
   onBandForm(form: NgForm) {
     this.newBandData['band'] = {
-      name: form.value.band,
-      image: form.value.bandImage,
-      about: form.value.about
+      name: form.value.band.trim(),
+      image: form.value.bandImage.trim(),
+      about: form.value.about.trim()
     };
   }
 
@@ -112,6 +106,7 @@ export class AddBandComponent implements OnInit {
         'former': new FormControl(false)
       })
     );
+    setTimeout(() => this.isMemberValid = this.newMembers.valid);
   }
 
   onRemoveMember(index: number) {
@@ -133,6 +128,7 @@ export class AddBandComponent implements OnInit {
         'image': new FormControl(null)
       })
     );
+    setTimeout(() => this.isDiscographyValid = this.discography.valid);
   }
 
   onRemoveAlbum(index: number) {
@@ -151,6 +147,7 @@ export class AddBandComponent implements OnInit {
         'image': new FormControl(null)
       })
     );
+    setTimeout(() => this.isGalleryValid = this.gallery.valid);
   }
 
   onRemoveImage(index: number) {

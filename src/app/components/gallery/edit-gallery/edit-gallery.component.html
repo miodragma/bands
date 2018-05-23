@@ -10,15 +10,14 @@
         <mat-form-field>
           <input formControlName="image" matInput placeholder="Image url" required>
         </mat-form-field>
-        <a style="cursor: pointer; margin-left: 10px; color: red" (click)="onRemoveImage(i)"><i
-          class="fas fa-minus"></i></a>
+        <a style="cursor: pointer; margin-left: 10px; color: red" (click)="onRemoveImage(i)"><i class="fas fa-minus"></i></a>
       </form>
       <div>
         <button type="button" style="float: left" mat-button
                 matStepperNext (click)="onGalleryForm()">Next
         </button>
-        <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewImage()"><i
-          class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Album</span>
+        <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewImage()">
+          <i class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Image</span>
         </div>
         <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
       </div>

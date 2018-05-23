@@ -44,7 +44,6 @@ export class GalleryComponent implements OnInit {
   }
 
   onOpenModal(image: string, index: number) {
-    console.log(this.image);
     const dataImage = {
       src: image,
       index: index,

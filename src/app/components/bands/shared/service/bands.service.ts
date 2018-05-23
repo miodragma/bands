@@ -52,7 +52,7 @@ export class BandsService {
         'Access-Control-Request-Method': 'POST',
       })
     };
-    return this.httpClient.post(`https://search-bands.herokuapp.com/addNewBand`, body, httpOptions)
+    return this.httpClient.post(`${this.API_URL}/addNewBand`, body, httpOptions)
       .map(res => res);
   }
 

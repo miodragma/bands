@@ -1,12 +1,13 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs/Subject';
 import { PageEvent } from '@angular/material';
+import { Subject } from 'rxjs/Subject';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 
 import { BandsService } from './shared/service/bands.service';
 
@@ -15,6 +16,7 @@ import * as fromBands from './shared/store/bands.reducers';
 import * as BandsActions from './shared/store/bands.actions';
 import { AboutBand } from '../about/shared/model/aboutBand.model';
 import { Member } from '../members/shared/model/member.model';
+import {forkJoin} from 'rxjs/observable/forkJoin';
 
 @Component({
   selector: 'app-bands',
@@ -81,25 +83,20 @@ export class BandsComponent implements OnInit {
   }
 
   onClickBand(bandId: number) {
-    this.render.addClass(this.container.nativeElement, 'containerAnime');
-    let clickedBand: AboutBand[] = [];
-    let clickedMember: Member[] = [];
-    let clickedGallery: {image: string}[] = [];
-    this.bandsService.getBand(bandId)
-      .subscribe(band => clickedBand = band);
-    this.bandsService.getMembers(bandId)
-      .subscribe(members => clickedMember = members);
-    this.bandsService.getGallery(bandId)
-      .subscribe(gallery => clickedGallery = gallery);
-    setTimeout(() => {
-      this.store.dispatch(new BandsActions.MultyTwo([
-        new BandsActions.GetBandId(bandId),
-        new BandsActions.GetBand(clickedBand),
-        new BandsActions.GetMembers(clickedMember),
-        new BandsActions.GetGallery(clickedGallery)
-      ]));
-      this.router.navigate(['about']);
-    }, 500);
+    const band = this.bandsService.getBand(bandId);
+    const member = this.bandsService.getMembers(bandId);
+    const gallery = this.bandsService.getGallery(bandId);
+    forkJoin([band, member, gallery])
+      .subscribe((res: [AboutBand[], Member[]]) => {
+        this.render.addClass(this.container.nativeElement, 'containerAnime');
+        this.store.dispatch(new BandsActions.MultyTwo([
+          new BandsActions.GetBandId(bandId),
+          new BandsActions.GetBand(res[0]),
+          new BandsActions.GetMembers(res[1]),
+          new BandsActions.GetGallery(res[2])
+        ]));
+        setTimeout(() => this.router.navigate(['about']), 500);
+      });
   }
 
   onChangeGenre(event) {
