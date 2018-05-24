@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit} from "@angular/core";
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';
@@ -25,7 +25,7 @@ export class EditDiscographyComponent implements OnInit, DoCheck {
     private dialogRef: MatDialogRef<EditDiscographyComponent>,
     private aboutService: AboutService,
     private bandsService: BandsService
-    ) { }
+  ) {  }
 
   ngOnInit() {
     this.initDiscography();
@@ -35,7 +35,6 @@ export class EditDiscographyComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.isDiscographyValid = this.discography.valid;
-    console.log(this.discography)
   }
 
   // Initialization Discography Array

@@ -8,15 +8,16 @@ import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 
 import { BandsService } from './shared/service/bands.service';
+
+import { AboutBand } from '../about/shared/model/aboutBand.model';
+import { Member } from '../members/shared/model/member.model';
 
 import * as fromApp from '../../shared/store/app.reducers';
 import * as fromBands from './shared/store/bands.reducers';
 import * as BandsActions from './shared/store/bands.actions';
-import { AboutBand } from '../about/shared/model/aboutBand.model';
-import { Member } from '../members/shared/model/member.model';
-import {forkJoin} from 'rxjs/observable/forkJoin';
 
 @Component({
   selector: 'app-bands',

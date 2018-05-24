@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit} from "@angular/core";
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';

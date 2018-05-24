@@ -1,5 +1,5 @@
-import {Component, DoCheck, OnInit, ViewChildren} from '@angular/core';
-import {FormArray, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import { Component, DoCheck, OnInit, ViewChildren } from '@angular/core';
+import { FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
 import { BandsService } from '../bands/shared/service/bands.service';
@@ -90,8 +90,8 @@ export class AddBandComponent implements OnInit, DoCheck {
 
   // Genre form
 
-    onGenreForm(genreForm) {
-      this.newBandData['genres'] = genreForm.value.genre;
+  onGenreForm(genreForm) {
+    this.newBandData['genres'] = genreForm.value.genre;
   }
 
   // Members form
