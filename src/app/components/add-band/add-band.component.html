@@ -25,7 +25,7 @@
         </textarea>
       </mat-form-field>
       <div>
-        <button type="button" [disabled]="!bandForm.valid" style="float: left" (click)="onBandForm(bandForm)" mat-button
+        <button type="button" #matStepper [disabled]="!bandForm.valid" style="float: left" (click)="onBandForm(bandForm, stepper)" mat-button
                 matStepperNext>Next
         </button>
       </div>

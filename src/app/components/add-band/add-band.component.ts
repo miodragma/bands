@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnInit, ViewChildren } from '@angular/core';
 import { FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
 
 import { BandsService } from '../bands/shared/service/bands.service';
 
@@ -28,7 +28,9 @@ export class AddBandComponent implements OnInit, DoCheck {
 
   constructor(
     private dialogRef: MatDialogRef<AddBandComponent>,
-    private bandsService: BandsService) { }
+    private bandsService: BandsService,
+    private snackBar: MatSnackBar
+    ) { }
 
   ngOnInit() {
     this.bandsService.getAllGenres()
@@ -80,12 +82,24 @@ export class AddBandComponent implements OnInit, DoCheck {
 
   // Band form
 
-  onBandForm(form: NgForm) {
+  onBandForm(form: NgForm, stepper) {
+    stepper.selectedIndex = 0;
     this.newBandData['band'] = {
       name: form.value.band.trim(),
       image: form.value.bandImage.trim(),
       about: form.value.about.trim()
     };
+    this.bandsService.checkIsBandInDB(this.newBandData['band'].name)
+      .subscribe(res => {
+        if (res[0].exists === true) {
+          stepper.selectedIndex = 0;
+          this.snackBar.open(`This band ${this.newBandData['band'].name} is exist!!!`, '', {
+            duration: 3000
+          });
+        } else {
+          stepper.selectedIndex = 1;
+        }
+      });
   }
 
   // Genre form

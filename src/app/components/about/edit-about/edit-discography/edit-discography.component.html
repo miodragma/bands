@@ -1,11 +1,11 @@
-<mat-horizontal-stepper [linear]="true" #stepper>
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
 
   <!-- Discography -->
 
   <mat-step [formGroup]="discography">
     <div formArrayName="newAlbum">
       <ng-template matStepLabel>Discography</ng-template>
-      <form *ngFor="let albumCtrl of discographyCtrl?.controls; let i = index" [formGroupName]="i">
+      <form #currentAlbum *ngFor="let albumCtrl of discographyCtrl?.controls; let i = index" [formGroupName]="i">
         <!-- Album Name -->
         <mat-form-field>
           <input formControlName="album" matInput placeholder="Album Name" required>
@@ -28,13 +28,12 @@
       <div>
         <button type="button" style="float: left" mat-button
                 matStepperNext
-                (click)="onDiscographyForm()"
+                (click)="onDiscographyForm(stepper)"
                 [disabled]="!isDiscographyValid">Next
         </button>
         <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewAlbum()"><i
           class="fas fa-plus"></i></a><span style="color: white; margin-left: 10px">Add new Album</span>
         </div>
-        <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
       </div>
     </div>
   </mat-step>

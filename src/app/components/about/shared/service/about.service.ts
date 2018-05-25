@@ -8,6 +8,11 @@ export class AboutService {
 
   constructor(private httpClient: HttpClient) {}
 
+  checkIsAlbumInDB(albumName: string, bandId: number) {
+    return this.httpClient.get<{exists: boolean}>(`${this.API_URL}/isExistAlbum/${albumName}/${bandId}`)
+      .map(value => value);
+  }
+
   addNewDiscography(body) {
     const httpOptions = {
       headers: new HttpHeaders({

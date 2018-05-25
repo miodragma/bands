@@ -42,6 +42,11 @@ export class BandsService {
       .map(genres => genres);
   }
 
+  checkIsBandInDB(bandName: string) {
+    return this.httpClient.get<{exists: boolean}>(`${this.API_URL}/isExistBand/${bandName}`)
+      .map(value => value);
+  }
+
   addNewBand(body) {
     const httpOptions = {
       headers: new HttpHeaders({

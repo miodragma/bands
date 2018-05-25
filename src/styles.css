@@ -138,6 +138,11 @@ textarea {
   pointer-events: none !important;
 }
 
+.mat-snack-bar-container {
+  background-color: white !important;
+  color: #000;
+}
+
 
 /*===========================================
  * Importing CSS Libraries
