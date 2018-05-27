@@ -79,9 +79,7 @@ export class EditDiscographyComponent implements OnInit, DoCheck {
     stepper.selectedIndex = 0;
     if (this.discography.controls.newAlbum['controls'].length === 0) {
       stepper.selectedIndex = 0;
-      this.snackBar.open('You have not added new album yet!!!', '', {
-        duration: 3000
-      });
+      this.onSnackBar('You have not added new album yet!!!');
     } else {
       const existsValues = [];
       this.discography.controls.newAlbum['controls'].map((album, index) => {
@@ -93,12 +91,9 @@ export class EditDiscographyComponent implements OnInit, DoCheck {
               this.render.removeClass(this.currentAlbum._results[index].nativeElement[0], 'isExistsName');
             if (index === this.discography.controls.newAlbum['controls'].length - 1) {
               setTimeout(() => {
-                console.log(existsValues, existsValues.includes(true));
                 if (existsValues.includes(true)) {
                   stepper.selectedIndex = 0;
-                  this.snackBar.open('Album name with orange color is exists!!!', '', {
-                    duration: 3000
-                  });
+                  this.onSnackBar('Some Album Name is exists!!!');
                 } else {
                   stepper.selectedIndex = 1;
                 }
@@ -125,6 +120,14 @@ export class EditDiscographyComponent implements OnInit, DoCheck {
           .subscribe(band => this.store.dispatch(new BandsActions.GetBand(band)));
       });
     this.dialogRef.close();
+  }
+
+  // Snack
+
+  onSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 3000
+    });
   }
 
 }

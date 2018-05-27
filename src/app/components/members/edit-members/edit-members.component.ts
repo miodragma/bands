@@ -1,6 +1,6 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit, Renderer2, ViewChildren } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
 import { Store } from '@ngrx/store';
 
 import { MembersService } from '../shared/service/members.service';
@@ -16,6 +16,7 @@ import * as BandsActions from '../../bands/shared/store/bands.actions';
 })
 export class EditMembersComponent implements OnInit, DoCheck {
 
+  @ViewChildren('currentMember') currentMember;
   isMembersValid = true;
 
   newMembers: FormGroup;
@@ -25,7 +26,10 @@ export class EditMembersComponent implements OnInit, DoCheck {
     private store: Store<fromApp.AppState>,
     private dialogRef: MatDialogRef<EditMembersComponent>,
     private membersService: MembersService,
-    private bandsService: BandsService) {
+    private bandsService: BandsService,
+    private snackBar: MatSnackBar,
+    private render: Renderer2
+    ) {
   }
 
   ngOnInit() {
@@ -73,8 +77,35 @@ export class EditMembersComponent implements OnInit, DoCheck {
     (<FormArray>this.newMembers.get('members')).removeAt(index);
   }
 
-  onMembersForm() {
+  onMembersForm(stepper) {
     this.newBandMembers['members'] = this.newMembers.value.members;
+    stepper.selectedIndex = 0;
+    if (this.newMembers.controls.members['controls'].length === 0) {
+      stepper.selectedIndex = 0;
+      this.onSnackBar('You have not added new member yet!!!');
+    } else {
+      const existsValues = [];
+      this.newMembers.controls.members['controls'].map((member, index) => {
+        const fullName = `${member.controls.firstName.value.trim()} ${member.controls.lastName.value.trim()}`;
+        this.membersService.checkIsMemberInDB(fullName, this.newBandMembers['bandId'])
+          .subscribe(res => {
+            existsValues.push(res[0].exists);
+            res[0].exists ?
+              this.render.addClass(this.currentMember._results[index].nativeElement[0], 'isExistsName') :
+              this.render.removeClass(this.currentMember._results[index].nativeElement[0], 'isExistsName');
+            if (index === this.newMembers.controls.members['controls'].length - 1) {
+              setTimeout(() => {
+                if (existsValues.includes(true)) {
+                  stepper.selectedIndex = 0;
+                  this.onSnackBar('Some Member Name is exists!!!');
+                } else {
+                  stepper.selectedIndex = 1;
+                }
+              }, 500);
+            }
+          });
+      });
+    }
   }
 
   // Get controls
@@ -95,6 +126,14 @@ export class EditMembersComponent implements OnInit, DoCheck {
           .subscribe(members => this.store.dispatch(new BandsActions.GetMembers(members)));
       });
     this.dialogRef.close();
+  }
+
+  // Snack
+
+  onSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 3000
+    });
   }
 
 }

@@ -1,10 +1,10 @@
-<mat-horizontal-stepper [linear]="true" #stepper>
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
 
   <!-- Members -->
   <mat-step [formGroup]="newMembers">
     <div formArrayName="members">
       <ng-template matStepLabel>Members</ng-template>
-      <form *ngFor="let memberCtrl of membersCtrl?.controls; let i = index" [formGroupName]="i">
+      <form #currentMember *ngFor="let memberCtrl of membersCtrl?.controls; let i = index" [formGroupName]="i">
         <!-- First Name -->
         <mat-form-field>
           <input formControlName="firstName" matInput placeholder="First Name" required>
@@ -28,8 +28,7 @@
       </form>
     </div>
     <div>
-      <button type="button" style="float: right" mat-button matStepperPrevious>Back</button>
-      <button type="button" style="float: left" mat-button matStepperNext (click)="onMembersForm()"
+      <button type="button" style="float: left" mat-button matStepperNext (click)="onMembersForm(stepper)"
               [disabled]="!isMembersValid">Next
       </button>
       <div style="text-align: center"><a style="cursor: pointer; margin-left: 10px; color: red" (click)="onAddNewMember()"><i

@@ -8,6 +8,11 @@ export class MembersService {
 
   constructor(private httpClient: HttpClient) {}
 
+  checkIsMemberInDB(fullName: string, bandId: number) {
+    return this.httpClient.get<{exists: boolean}>(`http://localhost:8080/isExistMember/${fullName}/${bandId}`)
+      .map(value => value);
+  }
+
   addNewMembers(body) {
     const httpOptions = {
       headers: new HttpHeaders({

@@ -1,3 +1,7 @@
 form {
   text-align: center;
 }
+
+.isExistsName {
+  color: orange !important;
+}
