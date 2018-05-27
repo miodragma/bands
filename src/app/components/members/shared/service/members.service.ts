@@ -9,7 +9,7 @@ export class MembersService {
   constructor(private httpClient: HttpClient) {}
 
   checkIsMemberInDB(fullName: string, bandId: number) {
-    return this.httpClient.get<{exists: boolean}>(`http://localhost:8080/isExistMember/${fullName}/${bandId}`)
+    return this.httpClient.get<{exists: boolean}>(`${this.API_URL}/isExistMember/${fullName}/${bandId}`)
       .map(value => value);
   }
 
