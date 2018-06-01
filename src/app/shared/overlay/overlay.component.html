@@ -1,0 +1,5 @@
+<div *ngIf="( overlayState | async ).isOverlay" class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing"
+     style="user-select: none; background-color: rgba(0, 0, 0, 0.4) !important"
+     (mousedown)="closeOverlay()">
+  <div class="arrow_box" [style.top.px]="top" [style.left.px]="left"><h1>Howwoow</h1></div>
+</div>

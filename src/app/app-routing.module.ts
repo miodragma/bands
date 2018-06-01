@@ -21,12 +21,14 @@ import { EditDiscographyComponent } from './components/about/edit-about/edit-dis
 import { EditGalleryComponent } from './components/gallery/edit-gallery/edit-gallery.component';
 import { EditMembersComponent } from './components/members/edit-members/edit-members.component';
 import { ImageComponent } from './components/gallery/image/image.component';
+import { OverlayComponent } from './shared/overlay/overlay.component';
 
 import { GuardService } from './shared/guard.service';
 import { BandsService } from './components/bands/shared/service/bands.service';
 import { AboutService } from './components/about/shared/service/about.service';
 import { GalleryService } from './components/gallery/shared/service/gallery.service';
 import { MembersService } from './components/members/shared/service/members.service';
+import { OverlayService } from './shared/overlay/shared/service/overlay.service';
 
 export const appRoutes: Routes = [
   { path: '', component: ContentComponent },
@@ -49,7 +51,8 @@ export const appRoutes: Routes = [
     EditDiscographyComponent,
     EditGalleryComponent,
     EditMembersComponent,
-    ImageComponent
+    ImageComponent,
+    OverlayComponent
   ],
   imports: [
     CommonModule,
@@ -70,10 +73,11 @@ export const appRoutes: Routes = [
     EditGalleryComponent,
     EditMembersComponent,
     ImageComponent,
+    OverlayComponent,
     RouterTestingModule
   ],
   entryComponents: [AddBandComponent, EditDiscographyComponent, EditGalleryComponent, ImageComponent, EditMembersComponent],
-  providers: [GuardService, BandsService, AboutService, GalleryService, MembersService]
+  providers: [GuardService, BandsService, AboutService, GalleryService, MembersService, OverlayService]
 })
 
 export class AppRoutingModule {}
