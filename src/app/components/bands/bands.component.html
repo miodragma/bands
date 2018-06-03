@@ -7,7 +7,7 @@
           <!--<mat-radio-button disabled="true" value="name" style="margin-right: 10px">Name</mat-radio-button>-->
           <!--<mat-radio-button disabled="true" value="genre">Genre</mat-radio-button>-->
         <!--</mat-radio-group>-->
-        <mat-form-field>
+        <mat-form-field #genresComment>
           <mat-select placeholder="Filter by Genre" (change)="onChangeGenre($event)" [value]="(bandsState | async).searchGenre">
             <mat-option>-- None --</mat-option>
             <mat-optgroup *ngFor="let group of ( bandsState | async ).allGenres" [label]="group.title_genre">
@@ -29,7 +29,7 @@
         </mat-paginator>
       </div>
       <div class="example-form col-md-5">
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" #inputComment>
           <input
             matInput
             placeholder="Search band"

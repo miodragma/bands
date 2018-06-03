@@ -26,6 +26,24 @@ export function overlayReducers(state = initialState, action: OverlayActions.Ove
         ...state,
         overlay: action.payload
       };
+    case (OverlayActions.SET_TO_TRUE):
+      return {
+        ...state,
+        isOverlay: true
+      };
+    case (OverlayActions.SET_COMMENTS):
+      const comments = [...state.overlay];
+      comments.filter(item => item['overlay'] === action.payload.name)
+        .map(obj => {
+          obj['comments'].map((comment, i) => {
+            comment['top'] = action.payload.comments[i]['top'];
+            comment['left'] = action.payload.comments[i]['left'];
+          });
+        });
+      return {
+        ...state,
+        overlay: comments
+      };
     default:
       return state;
   }

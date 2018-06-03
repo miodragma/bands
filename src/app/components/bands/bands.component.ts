@@ -18,6 +18,7 @@ import { Member } from '../members/shared/model/member.model';
 import * as fromApp from '../../shared/store/app.reducers';
 import * as fromBands from './shared/store/bands.reducers';
 import * as BandsActions from './shared/store/bands.actions';
+import * as OverlayActions from '../../shared/overlay/shared/store/overlay.actions';
 
 @Component({
   selector: 'app-bands',
@@ -26,6 +27,8 @@ import * as BandsActions from './shared/store/bands.actions';
 })
 export class BandsComponent implements OnInit {
 
+  @ViewChild('inputComment') inputComment;
+  @ViewChild('genresComment') genresComment;
   @ViewChild('pagin') pagin;
   @ViewChild('container') container: ElementRef;
 
@@ -81,6 +84,17 @@ export class BandsComponent implements OnInit {
     this.bandsState = this.store.select('bands');
     this.countFrom = 0;
     this.countTo = 10;
+    const comments = [
+      {
+        top: this.genresComment._elementRef.nativeElement.getBoundingClientRect().top - 105,
+        left: this.genresComment._elementRef.nativeElement.getBoundingClientRect().left - 35
+      },
+      {
+        top: this.inputComment._elementRef.nativeElement.getBoundingClientRect().top - 220,
+        left: this.inputComment._elementRef.nativeElement.getBoundingClientRect().left - 35
+      }
+    ];
+    this.store.dispatch(new OverlayActions.SetComments({name: 'bands', comments: comments}));
   }
 
   onClickBand(bandId: number) {

@@ -1,5 +1,12 @@
-<div *ngIf="( overlayState | async ).isOverlay" class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing"
+<div *ngIf="( overlayState | async ).isOverlay"
+     class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing"
      style="user-select: none; background-color: rgba(0, 0, 0, 0.4) !important"
      (mousedown)="closeOverlay()">
-  <div class="arrow_box" [style.top.px]="top" [style.left.px]="left"><h1>Howwoow</h1></div>
+  <div *ngIf="index !== -1">
+    <div *ngFor="let overlay of ( overlayState | async ).overlay[index].comments"
+         class="arrow_box"
+         [style.top.px]="overlay.top"
+         [style.left.px]="overlay.left"><p>{{ overlay.comment }}</p>
+    </div>
+  </div>
 </div>
