@@ -41,13 +41,16 @@ export class GalleryComponent implements OnInit, OnDestroy {
       this.render.setStyle(document.body, 'overflow', 'hidden');
       this.store.dispatch(new OverlayActions.SetToTrue());
     }
-    const comments = [
-      {
-        top: this.galleryComment.nativeElement.getBoundingClientRect().top - 4,
-        left: this.galleryComment.nativeElement.getBoundingClientRect().left + 125
-      }
-    ];
-    this.store.dispatch(new OverlayActions.SetComments({name: 'gallery', comments: comments}));
+    setTimeout(() => {
+      const forLeft = this.galleryComment.nativeElement.innerText === 'Gallery is empty' ? 270 : 125;
+      const comments = [
+        {
+          top: this.galleryComment.nativeElement.getBoundingClientRect().top - 4,
+          left: this.galleryComment.nativeElement.getBoundingClientRect().left + forLeft
+        }
+      ];
+      this.store.dispatch(new OverlayActions.SetComments({name: 'gallery', comments: comments}));
+    });
   }
 
   showEdit() {

@@ -177,7 +177,7 @@ export class AddBandComponent implements OnInit, DoCheck {
   onSubmitForm() {
     const newFullBand = this.newBandData;
     this.bandsService.addNewBand(newFullBand)
-      .subscribe(data => console.log(data));
+      .subscribe(data => console.log('Done'));
     this.dialogRef.close();
   }
 
