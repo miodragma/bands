@@ -42,8 +42,8 @@ export class AboutComponent implements OnInit, OnDestroy {
     }
     const comments = [
       {
-        top: this.discographyComment.nativeElement.getBoundingClientRect().top - 135,
-        left: this.discographyComment.nativeElement.getBoundingClientRect().left - 35
+        top: this.discographyComment.nativeElement.getBoundingClientRect().top - 8,
+        left: this.discographyComment.nativeElement.getBoundingClientRect().left - 265
       }
     ];
     this.store.dispatch(new OverlayActions.SetComments({name: 'about', comments: comments}));

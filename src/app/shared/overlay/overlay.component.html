@@ -4,7 +4,7 @@
      (mousedown)="closeOverlay()">
   <div *ngIf="index !== -1">
     <div *ngFor="let overlay of ( overlayState | async ).overlay[index].comments"
-         class="arrow_box"
+         [class]="overlay.class"
          [style.top.px]="overlay.top"
          [style.left.px]="overlay.left"><p>{{ overlay.comment }}</p>
     </div>

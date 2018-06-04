@@ -43,7 +43,7 @@ export class MembersComponent implements OnInit {
     const comments = [
       {
         top: this.membersComment.nativeElement.getBoundingClientRect().top - 145,
-        left: this.membersComment.nativeElement.getBoundingClientRect().left - 55
+        left: this.membersComment.nativeElement.getBoundingClientRect().left
       }
     ];
     this.store.dispatch(new OverlayActions.SetComments({name: 'members', comments: comments}));

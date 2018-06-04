@@ -43,8 +43,8 @@ export class GalleryComponent implements OnInit, OnDestroy {
     }
     const comments = [
       {
-        top: this.galleryComment.nativeElement.getBoundingClientRect().top - 145,
-        left: this.galleryComment.nativeElement.getBoundingClientRect().left - 55
+        top: this.galleryComment.nativeElement.getBoundingClientRect().top - 4,
+        left: this.galleryComment.nativeElement.getBoundingClientRect().left + 125
       }
     ];
     this.store.dispatch(new OverlayActions.SetComments({name: 'gallery', comments: comments}));

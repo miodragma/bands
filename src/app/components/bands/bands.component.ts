@@ -86,11 +86,11 @@ export class BandsComponent implements OnInit {
     this.countTo = 10;
     const comments = [
       {
-        top: this.genresComment._elementRef.nativeElement.getBoundingClientRect().top - 105,
+        top: this.genresComment._elementRef.nativeElement.getBoundingClientRect().top + 75,
         left: this.genresComment._elementRef.nativeElement.getBoundingClientRect().left - 35
       },
       {
-        top: this.inputComment._elementRef.nativeElement.getBoundingClientRect().top - 220,
+        top: this.inputComment._elementRef.nativeElement.getBoundingClientRect().top - 40,
         left: this.inputComment._elementRef.nativeElement.getBoundingClientRect().left - 35
       }
     ];
